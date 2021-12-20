@@ -14,30 +14,40 @@
                 </div>
                 
             </div>
+
+
+
+            <div id="newsFeed" class="col col-2 d-none d-lg-block news_feed" style="max-height: 90%; text-overflow: clip;" >
+ <!--                <div v-for="newsItem in news" :key="newsItem.id " style="max-height: 30%; overflow:hidden; text-overflow: ellipsis;">
+                    <h4>{{newsItem.newsTitle}}</h4>
+                    <p></p>
+                    <p>{{newsItem.newsBody }}</p>
+                </div> -->
+
+                <news_card v-for="Item in news" :key="Item.id" :Item="Item" > 
+
+
+                </news_card>
+            </div>   
+            
             
         </div>
 
 
-        <div id="newsFeed" class="col col-2 d-none d-lg-block news_feed" style="max-height: 90%; text-overflow: clip;" >
-            <div v-for="newsItem in news" :key="newsItem.id " style="max-height: 30%; overflow:hidden; text-overflow: ellipsis;">
-                <h4>{{newsItem.newsTitle}}</h4>
-                <p></p>
-                <p>{{newsItem.newsBody }}</p>
-            </div>
-
-        </div>        
+      
         
     </section>    
 </template>
 
 
 <script>
-//import { defineComponent } from '@vue/composition-api'
+    import news_card from '@/components/promo/news_card'
 
 
     export default {
     name: 'sectionPromo',
     components: {
+        news_card
 
     },
     data: function () {

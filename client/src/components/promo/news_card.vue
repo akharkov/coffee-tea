@@ -1,6 +1,7 @@
 <template>
-    <div class="newsCard">
-
+    <div  class="newsCard">
+        <p> {{Item.newsitle}} </p>
+        <p> {{Item.newsBody}} </p>        
         
     </div>
     
