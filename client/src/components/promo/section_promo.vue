@@ -1,30 +1,36 @@
 <template>
 
 
-    <section id="secPromo" class='promo mainsection container'>
-       <!--  <div class="row logo ">
-            <img src="./img/logo/MainLogo.png" alt="" class="logo_img">
-
-        </div> -->
-        <div class="row container-fluid " style="height:100%">
-            <div class="col col-10 ">
-                <div class=" quotes"> <!-- mainblock -->
+    <section id="secPromo" class=' mainsection ' style="margin:0">
+        
+        <div id="nav-bar" class="row  " style="margin:0 max-height:10%">
+            <!-- <img src="../../img/logo/MainLogo.png" alt="" class="logo_img"> -->
+            <nav_bar> </nav_bar>
+        </div> 
+        
+        <div class="row container-fluid " style=" height:85%">
+            
+            <div class="col col-10 promo">
+<!-- 
+                <div class=" quotes"> 
                     <h2>Этот мир не так уж плох, пока в нем есть кофе....</h2>
                     
-                </div>
+                </div> -->
                 
             </div>
 
 
 
-            <div id="newsFeed" class="col col-2 d-none d-lg-block news_feed" style="max-height: 90%; text-overflow: clip;" >
- <!--                <div v-for="newsItem in news" :key="newsItem.id " style="max-height: 30%; overflow:hidden; text-overflow: ellipsis;">
+            <div id="newsFeed" class="col col-2 d-none d-lg-block news_feed" style="max-height: 100%; overflow:hidden; text-overflow: clip;" >
+ <!--                
+                <div v-for="newsItem in news" :key="newsItem.id " style="max-height: 30%; overflow:hidden; text-overflow: ellipsis;">
                     <h4>{{newsItem.newsTitle}}</h4>
                     <p></p>
                     <p>{{newsItem.newsBody }}</p>
-                </div> -->
+                </div> 
+-->
 
-                <news_card v-for="Item in news" :key="Item.id" :Item="Item" > 
+                <news_card v-for="Item in news" :key="Item.id" :Item="Item" style="max-height: 100%; overflow:hidden; text-overflow: ellipsis;"> 
 
 
                 </news_card>
@@ -34,20 +40,27 @@
         </div>
 
 
+        <div id="footer" class="row  " style="margin:0  height:5%">
+            <!-- <img src="../../img/logo/MainLogo.png" alt="" class="logo_img"> -->
+           
+        </div> 
       
         
+    
     </section>    
 </template>
 
 
 <script>
-    import news_card from '@/components/promo/news_card'
+    import news_card from '@/components/promo/news_card';
+    import nav_bar from '@/components/nav_bar'
 
 
     export default {
     name: 'sectionPromo',
     components: {
-        news_card
+        news_card,
+        nav_bar
 
     },
     data: function () {
@@ -151,5 +164,20 @@ h4 {
   text-align: center;
   text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
 }
+
+
+  .news_feed{
+    border: 1px solid rgba(6, 94, 13, 0.5);
+    background-color: rgba(193, 199, 193, 0.5);
+     /* background: url("../img/sectionback.png") no-repeat center top; */
+    /* max-width: 800px; */
+    /* margin: auto; */
+    /* position: sticky; */
+    
+    /* top: 10px;  */
+  
+    
+
+  }
 </style>>
 

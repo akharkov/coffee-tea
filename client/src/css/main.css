@@ -41,16 +41,7 @@ h4 {
   word-spacing: 5px;
 }
 
-section {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 1px solid rgba(36, 6, 94, 0.5);
-  background-color: rgba(0, 0, 0, 0.1);
-  /* background: url("../img/sectionback.png") no-repeat center top; */
-  max-width: 800px;
-  margin: auto;
-  position: relative;
-}
+
 
 
 
@@ -74,13 +65,21 @@ img{
   max-width: 100%;
 } 
 
-
+section {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid rgba(36, 6, 94, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
+  /* background: url("../img/sectionback.png") no-repeat center top; */
+  /* max-width: 100%; */
+  margin: auto;
+  position: relative;
+}
 
 
   .mainsection {
-    height: 95vh;
-    /* background: url("../img/coffeecup3.jpg") no-repeat center top;  */
-    /* background-size:contain;  */
+    height: 98vh;
+    background: url("../img/coffee/bgpromo3.jpg") no-repeat center top; 
     background-size: cover;
     background-repeat:no-repeat;
     background-position: center center;
@@ -90,10 +89,10 @@ img{
   
   .promo {
     position: relative;
-    background: url("../img/coffeecup3.jpg") no-repeat center top;  
-     /*background: url("../img/coffee/bgpromo3.jpg") no-repeat center top; */
+    /* background: url("../img/coffeecup3.jpg") no-repeat center top;   */
+/*     background: url("../img/coffee/bgpromo3.jpg") no-repeat center top; 
 
-    background-size: contain ;
+    background-size: contain ; */
   }
 
   .header{
@@ -144,18 +143,4 @@ img{
     margin: 0 auto;
     display: inline-block;
     width: 100%;
-  }
-
-  .news_feed{
-    border: 1px solid rgba(6, 94, 13, 0.5);
-    background-color: rgba(193, 199, 193, 0.5);
-     /* background: url("../img/sectionback.png") no-repeat center top; */
-    /* max-width: 800px; */
-    /* margin: auto; */
-    position: sticky;
-    
-    top: 10px; 
-  
-    
-
   }

@@ -72,7 +72,13 @@ app.get("/----", function(req, res)  {
 
 app.get("/addnews", function(req, res)  {
     get2news(News, res);
+
 });
+//============================== Роуты ===============================
+
+
+
+
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'client', 'build')))
@@ -82,7 +88,13 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
+
+
+
 const PORT = 5000
+
+
+
 
 async function run() {
     console.log("Цепляемся к базе")  ;
@@ -101,6 +113,7 @@ async function run() {
         });
         console.log("Connected successfully to server");
         app.listen(PORT, () => console.log(`App has been running on port ${PORT}`))
+        
     } catch (e) {
         console.log('Server Error:', e.message)
         process.exit(1)

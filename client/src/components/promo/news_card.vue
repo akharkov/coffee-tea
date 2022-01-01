@@ -1,6 +1,6 @@
 <template>
     <div  class="newsCard">
-        <p> {{Item.newsitle}} </p>
+        <p> {{Item.newsTitle}} </p>
         <p> {{Item.newsBody}} </p>        
         
     </div>
@@ -77,9 +77,9 @@ export default {
     .newsCard{
         height: 20%;
         box-shadow: gray;
-        background-color: rgba(240, 247, 240, 0.3);
+        background-color: rgba(240, 247, 240, 0.1);
 
-        border-radius: 25px;
+        border-radius: 5px;
         margin: 1%;
 
     }
