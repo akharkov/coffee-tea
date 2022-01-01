@@ -21,7 +21,7 @@
 
 
 
-            <div id="newsFeed" class="col col-2 d-none d-lg-block news_feed" style="max-height: 100%; overflow:hidden; text-overflow: clip;" >
+            <div id="newsFeed" class="col col-2 d-none d-lg-block news_feed" style="max-height: 100%; overflow-y:scroll; text-overflow: clip;" >
  <!--                
                 <div v-for="newsItem in news" :key="newsItem.id " style="max-height: 30%; overflow:hidden; text-overflow: ellipsis;">
                     <h4>{{newsItem.newsTitle}}</h4>
@@ -30,7 +30,7 @@
                 </div> 
 -->
 
-                <news_card v-for="Item in news" :key="Item.id" :Item="Item" style="max-height: 100%; overflow:hidden; text-overflow: ellipsis;"> 
+                <news_card v-for="Item in news" :key="Item.id" :Item="Item" style="max-height: 100%;  text-overflow: ellipsis;"> 
 
 
                 </news_card>
@@ -168,7 +168,8 @@ h4 {
 
   .news_feed{
     border: 1px solid rgba(6, 94, 13, 0.5);
-    background-color: rgba(193, 199, 193, 0.5);
+    padding: 0;
+/*     background-color: rgba(193, 199, 193, 0.5); */
      /* background: url("../img/sectionback.png") no-repeat center top; */
     /* max-width: 800px; */
     /* margin: auto; */

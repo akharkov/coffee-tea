@@ -77,10 +77,13 @@ export default {
     .newsCard{
         height: 20%;
         box-shadow: gray;
-        background-color: rgba(240, 247, 240, 0.1);
+        background-color: rgba(240, 247, 240, 0.4);
 
         border-radius: 5px;
-        margin: 1%;
+        margin-top: 5%;
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-top: 1%;
 
     }
 
