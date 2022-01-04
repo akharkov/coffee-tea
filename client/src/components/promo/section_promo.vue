@@ -91,7 +91,7 @@
         this.getNewsAsyncAwait()
         //this.getNewsPromise()
     }
-    }
+}
 
 </script>
 
