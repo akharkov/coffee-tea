@@ -49,15 +49,23 @@
 
 <script>
   import section_promo from '@/components/promo/section_promo';
+ 
+
+
 
 
 export default {
   name: 'App',
+
   components: {
+    
     section_promo
     
   },
 }
+
+
+
 </script>
 
 <style>

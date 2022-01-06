@@ -38,7 +38,7 @@
             
             
         </div>
-
+        
 
         <div id="footer" class="row  " style="margin:0  height:5%">
             <!-- <img src="../../img/logo/MainLogo.png" alt="" class="logo_img"> -->
@@ -52,13 +52,14 @@
 
 
 <script>
+    //import fullscreennews from '@/components/promo/fullscreennews.vue'; 
     import news_card from '@/components/promo/news_card';
     import nav_bar from '@/components/nav_bar'
-
-
+    
     export default {
     name: 'sectionPromo',
     components: {
+        //fullscreennews,
         news_card,
         nav_bar
 

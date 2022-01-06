@@ -1,28 +1,33 @@
 <template>
     <div  class="newsCard" style="overflow:hidden" v-on:click="newsShow(Item, $event)">
-        <!-- <p> {{Item.newsTitle}} </p>
-        <p > {{Item.newsBody}} </p>   --> 
-<!-- 
-       <modal v-show="isModalVisible"  @close="closeModal" >
-           <div>t   tttt</div>
-       </modal> 
- -->
+        <p>{{$store.state.count}}</p> 
+        <p> {{Item.newsTitle}} </p>
+        <p > {{Item.newsBody}} </p> 
 
-<div class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()">
+
+       <fullscreennews v-bind:itemNews="Item" class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()" >
+           
+       </fullscreennews> 
+
+
+<!-- <div class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()">
 
     <div class="myModalNews" v-on:click="closeModal()">
         <div class="row" > 
             X
         </div>
-        <div>
-            {{Item.newsBody}}
+        <div class="row">
+            <div class="col">
+                {{Item.newsBody}}
+            </div>
+            
         </div>
         
 
     </div>
 
 </div>
-
+ -->
     </div>
     
     
@@ -32,11 +37,13 @@
 
 <script>
     //import modal from '@/components/other/modal.vue';
+   //import fullscreennews from '@/components/promo/fullscreennews.vue'; 
 
     export default {
-        name: 'newsCard',
+        name: 'news_card',
         componens:{
-//            modal
+            //fullscreennews: () => import('@/components/promo/fullscreennews.vue')
+            
             
         },
         props:{Item: Object},
@@ -70,8 +77,12 @@
 
             }
         },
+        beforeCreate: function () {
+            this.$options.components.fullscreennews = require('@/components/promo/fullscreennews.vue').default;
+            //this.store.commit('increment');
+        },
         created(){
-
+            //this.$store.commit('increment');
         },
         filters: {
             truncate: function (text, length, suffix) {
