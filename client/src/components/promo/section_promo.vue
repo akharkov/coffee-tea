@@ -15,7 +15,7 @@
                 <div class=" quotes"> 
                     <h2>Этот мир не так уж плох, пока в нем есть кофе....</h2>
                     
-                </div> -->
+</div> -->
                 
             </div>
 
@@ -31,9 +31,8 @@
 -->
 
                 <news_card v-for="Item in news" :key="Item.id" :Item="Item" style="max-height: 100%;  text-overflow: ellipsis;"> 
-
-
                 </news_card>
+                 
             </div>   
             
             
@@ -46,6 +45,9 @@
         </div> 
       
         
+       <fullscreennews v-bind:itemNews="$store.state.tmpObj" class="myModalBackground" v-show="$store.state.isModalVisibleNews"   > <!-- @close="closeModal" v-on:click="closeModal()" -->
+           
+       </fullscreennews> 
     
     </section>    
 </template>
@@ -63,6 +65,10 @@
         news_card,
         nav_bar
 
+    },
+    beforeCreate: function () {
+        this.$options.components.fullscreennews = require('@/components/promo/fullscreennews.vue').default;
+       
     },
     data: function () {
         return {

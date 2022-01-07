@@ -1,14 +1,14 @@
 <template>
     <div  class="newsCard" style="overflow:hidden" v-on:click="newsShow(Item, $event)">
-        <p>{{$store.state.count}}</p> 
+        <p>{{this.$store.state.count}}  isModalVisibleNews </p>  
         <p> {{Item.newsTitle}} </p>
         <p > {{Item.newsBody}} </p> 
 
-
+<!-- 
        <fullscreennews v-bind:itemNews="Item" class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()" >
            
        </fullscreennews> 
-
+ -->
 
 <!-- <div class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()">
 
@@ -36,14 +36,10 @@
 </template>
 
 <script>
-    //import modal from '@/components/other/modal.vue';
-   //import fullscreennews from '@/components/promo/fullscreennews.vue'; 
 
     export default {
         name: 'news_card',
         componens:{
-            //fullscreennews: () => import('@/components/promo/fullscreennews.vue')
-            
             
         },
         props:{Item: Object},
@@ -55,34 +51,17 @@
                 isModalVisible: false, /* управление компонентом модального окна */
                 isModalShow: false,
                 cardData:{
-
-
-
-                    cardId:"",
-                    newsTitle:"",
-                    newsBody:"Ну очень интересно "
-                        +"Lorem ipsum dolor sit,"
-                        +"amet consectetur adipisicing elit."
-                        +"Corrupti nemo eaque totam eos,"
-                        +"dignissimos sint molestias ullam a"
-                        +"consequatur officiis illo nisi quae eum",
-                    newsEnable:1, 
-                    newsDateBegin:Date.now, 
-                    newsDateEnd:Date.now,
-                    newsCreated:Date.now
-                    
-                    
-
                 }
 
             }
         },
+        /* 
         beforeCreate: function () {
             this.$options.components.fullscreennews = require('@/components/promo/fullscreennews.vue').default;
             //this.store.commit('increment');
-        },
+        }, */
         created(){
-            //this.$store.commit('increment');
+         
         },
         filters: {
             truncate: function (text, length, suffix) {
@@ -106,6 +85,9 @@
                 if (this.isModalShow ===false){
                     this.isModalVisible = true;
                     this.isModalShow = true;
+                    this.$store.commit('tmpObjAssign');
+                    this.$store.commit('fullNewsVisible');
+//alert(this.$store.state.count)
 
 //alert("2 if ",this.isModalVisible,this.isModalShow);
                 }

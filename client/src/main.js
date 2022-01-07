@@ -31,11 +31,23 @@ Vue.use(IconsPlugin);
 
 const store = new Vuex.Store({
   state: {
-    count: 999
+    count: 999,
+    isModalVisibleNews: false,
+    tmpObj: {}
   },
   mutations: {
     increment (state) {
       state.count++
+    },
+    tmpObjAssign(state, newsItem){
+      state.tmpObj = newsItem;
+
+    },
+    fullNewsVisible(state){
+      state.isModalVisibleNews = true;
+    },
+    fullNewsHide(state){
+      state.isModalVisibleNews = false;
     }
   }
 });
