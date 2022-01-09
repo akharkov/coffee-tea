@@ -1,23 +1,30 @@
 <template>
-        
-   <!--  <div class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()"> -->
-<div class="myModalBackground"  >
-        <div class="myModalNews" v-on:click="closeModal()"><!--  v-on:click="closeModal()" -->
-            <div class="row" > 
-                X
-            </div>
-            <div class="row">
-                <div class="col">
-                   
-                    {{this.$store.state.tmpObj.newsBody}}
+      
+    <transition name="fade">
+        <div class="myModalBackground"  >
+                <div class="myModalNews" >
+                    <div class="row" >
+                        <div v-on:click="closeModal()" style="float: left"> 
+X                         
+
+
+
+                        </div> 
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                        
+                            {{this.$store.state.tmpObj.newsBody}}
+                        </div>
+                        
+                    </div>
+                    
+
                 </div>
-                
-            </div>
-            
 
         </div>
-
-    </div>
+    </transition>    
 </template>
 
 
@@ -107,5 +114,16 @@
         color: darkred;                                         
   
     }
-        
+
+/* styles for transitions */
+    .fade-enter-active, .fade-leave-active {
+    transition: opacity .8s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+    opacity: 0;
+    }
+/* styles for transitions */   
+
+
+
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div  class="newsCard" style="overflow:hidden" v-on:click="newsShow(Item, $event)">
-        <p>{{this.$store.state.tmpObj}}  isModalVisibleNews </p>  
+        
         <p> {{Item.newsTitle}} </p>
         <p > {{Item.newsBody}} </p> 
 
