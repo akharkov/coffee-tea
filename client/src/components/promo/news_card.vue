@@ -1,6 +1,6 @@
 <template>
     <div  class="newsCard" style="overflow:hidden" v-on:click="newsShow(Item, $event)">
-        <p>{{this.$store.state.count}}  isModalVisibleNews </p>  
+        <p>{{this.$store.state.tmpObj}}  isModalVisibleNews </p>  
         <p> {{Item.newsTitle}} </p>
         <p > {{Item.newsBody}} </p> 
 
@@ -81,32 +81,17 @@
         },
         methods: {
             showModal() {
-//alert("1 if ",this.isModalVisible,this.isModalShow)                
-                if (this.isModalShow ===false){
-                    this.isModalVisible = true;
-                    this.isModalShow = true;
-                    this.$store.commit('tmpObjAssign');
-                    this.$store.commit('fullNewsVisible');
-//alert(this.$store.state.count)
-
-//alert("2 if ",this.isModalVisible,this.isModalShow);
-                }
-                else {
-                    this.isModalShow=false;
-                }
-                
-                //alert(this.isModalVisible)
+                this.$store.commit('tmpObjAssign',this.Item);
+                this.$store.commit('fullNewsVisible');
             },
-            closeModal() {
-                this.isModalVisible = false;
-                //alert(this.isModalVisible)
-            },
+            /* closeModal() {
+                this.$store.commit('fullNewsHide');                
+            }, */
             newsShow: function (Item, event){
 
                 //alert(Item.newsBody);
                 this.showModal();
     /* 
-
                 // `this` внутри методов указывает на экземпляр Vue
                     alert('Привет, ' + this.name + '!'+event)
                 // `event` — нативное событие DOM

@@ -41,6 +41,8 @@ const store = new Vuex.Store({
     },
     tmpObjAssign(state, newsItem){
       state.tmpObj = newsItem;
+      
+
 
     },
     fullNewsVisible(state){

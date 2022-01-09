@@ -2,14 +2,14 @@
         
    <!--  <div class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()"> -->
 <div class="myModalBackground"  >
-        <div class="myModalNews" ><!--  v-on:click="closeModal()" -->
+        <div class="myModalNews" v-on:click="closeModal()"><!--  v-on:click="closeModal()" -->
             <div class="row" > 
                 X
             </div>
             <div class="row">
                 <div class="col">
-                  {{itemNews.newsBody}}
-
+                   
+                    {{this.$store.state.tmpObj.newsBody}}
                 </div>
                 
             </div>
@@ -57,6 +57,9 @@
 
         },
         methods: {
+            closeModal() {
+                this.$store.commit('fullNewsHide');                
+            },
             
         },
         mounted() {
