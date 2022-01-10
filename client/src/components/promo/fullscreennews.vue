@@ -13,7 +13,7 @@ X
                        
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col newsField">
                         
                             {{this.$store.state.tmpObj.newsBody}}
                         </div>
@@ -124,6 +124,13 @@ X
     }
 /* styles for transitions */   
 
+.newsField{
 
+
+
+    -webkit-box-shadow: 14px 18px 11px 0px rgba(14, 49, 75, 0.19);
+    -moz-box-shadow: 14px 18px 11px 0px rgba(14, 49, 75, 0.19);
+    box-shadow: 14px 18px 11px 0px rgba(14, 49, 75, 0.19);
+}
 
 </style>

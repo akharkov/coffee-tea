@@ -1,4 +1,8 @@
 
+
+
+
+
 @charset "UTF-8";
 /* @import url("../css/reset.css");  */
 /* @import url("bootstrap/bootstrap.css"); */
@@ -8,6 +12,16 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+body { 
+
+  color:#888C03;
+  color:#565902;
+  color:#D9C8A9;
+  color:#D97904;
+  color:#BF4904 ;
+  }
+
 
 h2 {
   width: 100%;

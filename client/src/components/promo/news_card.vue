@@ -1,8 +1,9 @@
 <template>
     <div  class="newsCard" style="overflow:hidden" v-on:click="newsShow(Item, $event)">
         
-        <p> {{Item.newsTitle}} </p>
+         {{Item.newsTitle}} 
         <p > {{Item.newsBody}} </p> 
+        
 
 <!-- 
        <fullscreennews v-bind:itemNews="Item" class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()" >
@@ -116,16 +117,22 @@
 <style scoped>
     .newsCard{
         height: 30%;
-        box-shadow: gray;
-        background-color: rgba(180, 185, 180, 0.4);
-
+        background-color: rgba(190, 192, 134, 0.555);
+color: rgb(232, 243, 243);
         border-radius: 5px;
         margin-top: 5%;
         margin-left: 2%;
         margin-right: 2%;
         padding-top: 1%;
+/* 
+        -webkit-box-shadow: 1px 1px 10px 15px rgba(20, 28, 34, 0.22) inset;
+        -moz-box-shadow: 1px 1px 10px 15px rgba(20, 28, 34, 0.22) inset;
+        box-shadow: 1px 1px 10px 15px rgba(29, 30, 31, 0.22) inset; */
 
     }
+
+
+
 
 
     .myModalBackground{
@@ -161,5 +168,8 @@
   
     }
         
+
+
+
 
 </style>

@@ -174,18 +174,38 @@ h4 {
 
 
   .news_feed{
-    border: 1px solid rgba(6, 94, 13, 0.5);
+    border: 1px solid rgba(62, 78, 63, 0.2);
     padding: 0;
-/*     background-color: rgba(193, 199, 193, 0.5); */
-     /* background: url("../img/sectionback.png") no-repeat center top; */
-    /* max-width: 800px; */
-    /* margin: auto; */
-    /* position: sticky; */
-    
-    /* top: 10px;  */
-  
+
     
 
   }
+
+/* ======== */
+ #newsFeed::-webkit-scrollbar {
+  width: 10px;
+  background-color: #44701b25;
+}
+/* бегунок */
+#newsFeed::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #90978e;
+}
+
+
+/* линия скроллера */
+#newsFeed::-webkit-scrollbar-track {
+ /*  -webkit-box-shadow: inset 0 0 10px rgba(248, 246, 246, 0.1); */
+  border-radius: 10px;
+  background-color: #0b570b26;
+  box-shadow: rgba(245, 246, 246, 0.102);
+}
+
+ 
+/* ========= */
+
+
+
+
 </style>>
 
