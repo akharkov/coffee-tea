@@ -3,19 +3,20 @@
     <transition name="fade">
         <div class="myModalBackground"  >
                 <div class="myModalNews" >
-                    <div class="row" >
-                        <div v-on:click="closeModal()" style="float: left"> 
+                    <div class="row " >
+                        <div v-on:click="closeModal()"  style="float: left"> 
 X                         
-
-
-
                         </div> 
                        
                     </div>
-                    <div class="row">
+                    <div class="row" sty>
                         <div class="col newsField">
                         
                             {{this.$store.state.tmpObj.newsBody}}
+                            {{this.$store.state.tmpObj.newsBody}}
+                            {{this.$store.state.tmpObj.newsBody}}
+                            {{this.$store.state.tmpObj.newsBody}}
+
                         </div>
                         
                     </div>
@@ -89,7 +90,8 @@ X
         top:0;
         left:0;       
         
-        background-color: rgba(210, 230, 210, 0.8);
+        background-color: rgba(210, 230, 210, 0.8); 
+        
 
         
         /* top: 50%;   *//* position the top  edge of the element at the middle of the parent */
@@ -104,7 +106,7 @@ X
         position: fixed;
         
         
-        background-color: rgba(27, 29, 27, 0.4);
+        background-color: rgba(50, 112, 50, 0.4); 
 
         
         top: 50%;   /* position the top  edge of the element at the middle of the parent */

@@ -2,7 +2,7 @@
     <div  class="newsCard" style="overflow:hidden" v-on:click="newsShow(Item, $event)">
         
          {{Item.newsTitle}} 
-        <p > {{Item.newsBody}} </p> 
+        <p > {{Item.newsBody | truncate(150,"...")}} </p> 
         
 
 <!-- 
@@ -116,19 +116,28 @@
 
 <style scoped>
     .newsCard{
-        height: 30%;
+        height: 20%;
         background-color: rgba(190, 192, 134, 0.555);
 color: rgb(232, 243, 243);
         border-radius: 5px;
-        margin-top: 5%;
+        margin-top: 2%;
+        margin-bottom: 10%;
         margin-left: 2%;
-        margin-right: 2%;
+        margin-right: 7%;
         padding-top: 1%;
 /* 
         -webkit-box-shadow: 1px 1px 10px 15px rgba(20, 28, 34, 0.22) inset;
         -moz-box-shadow: 1px 1px 10px 15px rgba(20, 28, 34, 0.22) inset;
         box-shadow: 1px 1px 10px 15px rgba(29, 30, 31, 0.22) inset; */
 
+    }
+
+    .newsCard:hover{
+        /* color: rgb(81, 109, 109); */
+        background-color: rgba(135, 138, 57, 0.8);
+        -webkit-box-shadow: 18px 20px 8px 0px rgba(34, 60, 80, 0.3);
+        -moz-box-shadow: 18px 20px 8px 0px rgba(34, 60, 80, 0.3);
+        box-shadow: 18px 20px 8px 0px rgba(34, 60, 80, 0.3);
     }
 
 
