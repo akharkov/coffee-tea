@@ -40,8 +40,17 @@
         
 
         <div id="footer" class="row  " style="margin:0  height:5%">
-            <!-- <img src="../../img/logo/MainLogo.png" alt="" class="logo_img"> -->
+         
+          <div class="col-3"  >
+            <socialkeys> </socialkeys>  
            
+          </div> 
+           
+          <div class="col-8">
+          </div>  
+          <div class="col-1">
+           
+          </div> 
         </div> 
       
         
@@ -56,18 +65,21 @@
 <script>
     //import fullscreennews from '@/components/promo/fullscreennews.vue'; 
     import news_card from '@/components/promo/news_card';
-    import nav_bar from '@/components/nav_bar'
+    import nav_bar from '@/components/nav_bar';
+    import socialkeys from '@/components/other/socialkeys.vue';
     
     export default {
     name: 'sectionPromo',
     components: {
         //fullscreennews,
         news_card,
-        nav_bar
+        nav_bar,
+        socialkeys
 
     },
     beforeCreate: function () {
         this.$options.components.fullscreennews = require('@/components/promo/fullscreennews.vue').default;
+        this.$options.components.fullscreennews = require('@/components/other/socialkeys.vue').default;
        
     },
     data: function () {

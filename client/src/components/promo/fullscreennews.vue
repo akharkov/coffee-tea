@@ -2,15 +2,15 @@
       
     <transition name="fade">
         <div class="myModalBackground"  >
-                <div class="myModalNews" >
+                <div class="myModalNews newsField" >
                     <div class="row " >
                         <div v-on:click="closeModal()"  style="float: left"> 
 X                         
                         </div> 
                        
                     </div>
-                    <div class="row" sty>
-                        <div class="col newsField">
+                    <div class="row" style="margin:0">
+                        <div class="col ">
                         
                             {{this.$store.state.tmpObj.newsBody}}
                             {{this.$store.state.tmpObj.newsBody}}
@@ -113,7 +113,13 @@ X
         left: 50%;  /* position the left edge of the element at the middle of the parent */
 
         transform: translate(-50%, -50%); /* This is a shorthand of translateX(-50%) and translateY(-50%) */
-        color: darkred;                                         
+         
+        
+        border: 2px solid  white;
+        border-radius: 1em;
+        -webkit-box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
+        -moz-box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
+        box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
   
     }
 
@@ -127,12 +133,9 @@ X
 /* styles for transitions */   
 
 .newsField{
+    color: darkred; 
 
 
-
-    -webkit-box-shadow: 14px 18px 11px 0px rgba(14, 49, 75, 0.19);
-    -moz-box-shadow: 14px 18px 11px 0px rgba(14, 49, 75, 0.19);
-    box-shadow: 14px 18px 11px 0px rgba(14, 49, 75, 0.19);
 }
 
 </style>
