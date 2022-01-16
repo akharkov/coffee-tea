@@ -46,13 +46,24 @@ const { errorMonitor } = require('events');
 const { Console } = require('console');
 const { Schema } = mongoose;
 
-//============================== Роуты ===============================
+//============================== Роуты start ===============================
 app.get('/', function (request, response) {
     response.sendFile( 'index.html')
 })
 
 app.get('/news999', function (request, response) {
     News.find({}).sort("newsCreated").exec(function(err, docs){
+        if(err){
+            return console.log(err);
+        }
+        console.log(docs);
+        response.send(docs);
+    })
+})
+
+
+app.get('/products', function (request, response) {
+    ProductCards.find({}).sort("productType").exec(function(err, docs){
         if(err){
             return console.log(err);
         }
@@ -75,7 +86,7 @@ app.get("/addnews", function(req, res)  {
     get2news(News, res);
 
 });
-//============================== Роуты ===============================
+//============================== Роуты end ===============================
 
 
 

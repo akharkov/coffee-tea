@@ -14,7 +14,12 @@
             <div class="row " style="margin:0">
                 <div class="col-1"></div>
                 <div class="col-10 productCards myShadow">
-                    <product_card class="col-2"> </product_card>
+                    <div class="row">
+                        <product_card class="col-2" v-for="Item in productsData" :key="Item.id" :Item="Item" style="max-height: 100%;  text-overflow: ellipsis;"> 
+
+                        </product_card>
+                    </div>
+                    
                 </div>
             </div>       
        
@@ -43,7 +48,15 @@ export default {
        
     },
     methods: {
+        getProductsPromise() {
+            fetch('/news999')
+                .then(response => response.json())
+                .then(data => this.productsData = data)
+        }
 
+    },
+    mounted(){
+        this.getProductsPromise();
     }
     
 }
@@ -73,7 +86,7 @@ export default {
     .productCards{
         margin: 10px;
         
-        height: 500px;
+        height: 80vh;
 
         background: rgba(241, 237, 237, 0.5);
         border-radius: 10px;
@@ -81,9 +94,9 @@ export default {
 
     .myShadow{
 
-        -webkit-box-shadow: 18px 20px 8px 0px rgba(34, 60, 80, 0.3);
-        -moz-box-shadow: 18px 20px 8px 0px rgba(34, 60, 80, 0.3);
-        box-shadow: 18px 20px 8px 0px rgba(34, 60, 80, 0.3);
+        -webkit-box-shadow: 15px 15px 5px 0px rgba(34, 60, 80, 0.3);
+        -moz-box-shadow: 15px 15px 5px 0px rgba(34, 60, 80, 0.3);
+        box-shadow: 15px 15px 5px 0px rgba(34, 60, 80, 0.3);
     }
 
 
