@@ -82,7 +82,7 @@ img{
 section {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border: 1px solid rgba(36, 6, 94, 0.5);
+  /* border: 1px solid rgba(36, 6, 94, 0.5); */
   background-color: rgba(0, 0, 0, 0.1);
   /* background: url("../img/sectionback.png") no-repeat center top; */
   /* max-width: 100%; */
@@ -91,14 +91,7 @@ section {
 }
 
 
-  .mainsection {
-    height: 98vh;
-    background: url("../img/coffee/bgpromo3.jpg") no-repeat center top; 
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position: center center;
-    /* background-attachment: fixed; */
-  }
+  
   
   
   .promo {

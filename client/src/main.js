@@ -31,7 +31,7 @@ Vue.use(IconsPlugin);
 
 const store = new Vuex.Store({
   state: {
-    count: 999,
+    count: 0,
     isModalVisibleNews: false,
     tmpObj: {}
   },
@@ -47,6 +47,7 @@ const store = new Vuex.Store({
     },
     fullNewsVisible(state){
       state.isModalVisibleNews = true;
+      
     },
     fullNewsHide(state){
       state.isModalVisibleNews = false;

@@ -35,7 +35,7 @@ X
     export default {
         name: 'fullscreennews',
         componens:{
-            newscard: () => import('@/components/promo/news_card.vue')
+            news_card: () => import('@/components/promo/news_card.vue')
             
         },
         props:{itemNews: Object},

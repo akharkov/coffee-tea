@@ -4,6 +4,7 @@
 
 
     <section_promo>  </section_promo>
+    <section_products >  </section_products>
 
 
 
@@ -49,6 +50,7 @@
 
 <script>
   import section_promo from '@/components/promo/section_promo';
+  import section_products from '@/components/section_products/section_products';
  
 
 
@@ -59,7 +61,8 @@ export default {
 
   components: {
     
-    section_promo
+    section_promo,
+    section_products
     
   },
 }

@@ -65,10 +65,11 @@ app.get("/--", function(req, res)  {
     get2minus(ProductCards, res);
 });
 
+/* эта функция просто создает N карточек продуктов..... */
 app.get("/----", function(req, res)  {
     get2plus(ProductCards, res);
 });
-
+/* эта функция просто создает N карточек продуктов..... */
 
 app.get("/addnews", function(req, res)  {
     get2news(News, res);
@@ -228,13 +229,14 @@ async function get2plus(collect, res){
     let docCount=0;
 
     const prodTypes = await productType.find();
-    console.log('prodTypes===',prodTypes[0]._id);
+    console.log('prodTypes=',prodTypes); //[0]._id
 
-
-    /* prodTypes.forEach(item => {
+    /* 
+    prodTypes.forEach(item => {
       console.log('prodTypes===',item._id);
-
-    }); */
+    }); 
+    
+    */
 
 
     await ProductCards.find()
@@ -253,24 +255,34 @@ async function get2plus(collect, res){
             }else{
 
                 docCount = 0; //count;
+                
                 console.log("Estimated Count docCount= :", docCount);
 
                 if (docCount===0) {
                     let prodCard;
 
                     var id ;
+                    let prodTypeNum=0;
+                    let picNo=0;
+                  
 
 
 
-                    for (let i=1;i<3;i++) {
 
-                        //           id = ObjectId('619ea5069365ba31cc27cfe0');
-                        /* id = mongoose.Types.ObjectId('619ea5069365ba31cc27cfe0');  */
+
+                    for (let i=1;i<16;i++) {
+
+// id = ObjectId('619ea5069365ba31cc27cfe0');
+// id = mongoose.Types.ObjectId('619ea5069365ba31cc27cfe0');  
 // console.log('mongoose.Types.ObjectId(  ===  ',id);
+
+
+
 
                         prodCard = new ProductCards( {
                             _id: new mongoose.Types.ObjectId(),
-                            productType: prodTypes[i-1]._id, //код типа продукта из справочника
+                            productType: prodTypes[0]._id
+                            , //код типа продукта из справочника
                             productName: 'Продукт № '+i, //название продукта
                             productProp: 'String'+i,  // свойства продукта
                             pic: 'Pic'+i,  //ссылка на файл изображения
@@ -279,6 +291,15 @@ async function get2plus(collect, res){
                             productPromo: 1
 
                         });
+
+                        if (picNo<3){
+                            picNo++
+                        }
+
+                        else{picNo=0}
+
+                        prodCard.pic="Pic"+picNo;
+
 
                         prodCard.save()
                             .then(function(doc){

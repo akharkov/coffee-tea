@@ -42,7 +42,7 @@
         <div id="footer" class="row  " style="margin:0  height:5%">
          
           <div class="col-3"  >
-            <socialkeys> </socialkeys>  
+            <socialkeys> </socialkeys>   
            
           </div> 
            
@@ -54,7 +54,7 @@
         </div> 
       
         
-       <fullscreennews v-bind:itemNews="$store.state.tmpObj" class="myModalBackground" v-show="$store.state.isModalVisibleNews"   > <!-- @close="closeModal" v-on:click="closeModal()" -->
+       <fullscreennews v-bind:itemNews="this.$store.state.tmpObj" class="myModalBackground" v-show="this.$store.state.isModalVisibleNews"   > <!-- @close="closeModal" v-on:click="closeModal()" -->
            
        </fullscreennews> 
     
@@ -66,20 +66,20 @@
     //import fullscreennews from '@/components/promo/fullscreennews.vue'; 
     import news_card from '@/components/promo/news_card';
     import nav_bar from '@/components/nav_bar';
-    import socialkeys from '@/components/other/socialkeys.vue';
+    /* import socialkeys from '@/components/other/socialkeys.vue'; */
     
     export default {
     name: 'sectionPromo',
     components: {
         //fullscreennews,
         news_card,
-        nav_bar,
-        socialkeys
+        nav_bar/* ,
+        socialkeys */
 
     },
     beforeCreate: function () {
         this.$options.components.fullscreennews = require('@/components/promo/fullscreennews.vue').default;
-        this.$options.components.fullscreennews = require('@/components/other/socialkeys.vue').default;
+        this.$options.components.socialkeys = require('@/components/other/socialkeys.vue').default;
        
     },
     data: function () {
@@ -119,50 +119,57 @@
 
 
 <style scoped>
+  .mainsection {
+      height: 98vh;
+      background: url("../../img/coffee/bgpromo3.jpg") no-repeat center top; 
+      background-size: cover;
+      background-repeat:no-repeat;
+      background-position: center center;
+      /* background-attachment: fixed; */
+    }
+
+  h2 {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    font: bold 40px Lobster, Arial, sans-serif;
+    color: #f7f2f2;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+    letter-spacing: 15px;
+    word-spacing: 15px;
+  }
+
+  h3 {
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    font: bold 40px Lobster, Arial, sans-serif;
+    color: #d8d5d5;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+    letter-spacing: 20px;
+    word-spacing: 15px;
+  }
+
+  h4 {
+    width: 100%;
+    height: 15px;
+    text-align: left;
+    font: bold 20px Arial, sans-serif;
+    color: #24055e;
+    letter-spacing: 10px;
+    word-spacing: 5px;
+  }
 
 
-h2 {
-  width: 100%;
-  height: 100px;
-  text-align: center;
-  font: bold 40px Lobster, Arial, sans-serif;
-  color: #f7f2f2;
-  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
-  letter-spacing: 15px;
-  word-spacing: 15px;
-}
-
-h3 {
-  width: 100%;
-  height: 25px;
-  text-align: center;
-  font: bold 40px Lobster, Arial, sans-serif;
-  color: #d8d5d5;
-  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
-  letter-spacing: 20px;
-  word-spacing: 15px;
-}
-
-h4 {
-  width: 100%;
-  height: 15px;
-  text-align: left;
-  font: bold 20px Arial, sans-serif;
-  color: #24055e;
-  letter-spacing: 10px;
-  word-spacing: 5px;
-}
-
-
-.mainblock{
-  margin: 0;
-  /* background: yellow; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
-}
+  .mainblock{
+    margin: 0;
+    /* background: yellow; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+  }
 
 
   

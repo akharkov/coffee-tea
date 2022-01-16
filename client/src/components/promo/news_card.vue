@@ -118,7 +118,7 @@
     .newsCard{
         height: 20%;
         background-color: rgba(190, 192, 134, 0.555);
-color: rgb(232, 243, 243);
+        color: rgb(232, 243, 243);
         border-radius: 5px;
         margin-top: 2%;
         margin-bottom: 10%;
