@@ -2,7 +2,7 @@
 
 <template>
     <div class="cardMainStyle myCardShadow ">
-
+        {{Item.productName}}
 
     </div>
     
@@ -12,7 +12,7 @@
     
 export default {
     name:"product_card",
-    props:[],
+    props:{Item: Object},
     data:function () {
         return {
         mess: "Здесь будет инфа о продукте!!!",

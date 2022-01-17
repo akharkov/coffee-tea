@@ -281,7 +281,12 @@ async function get2plus(collect, res){
 
 
 
-                    for (let i=1;i<16;i++) {
+                    for (let i=1;i<51;i++) {
+
+                        (picNo<6) ? picNo++ : picNo=0;
+                        (prodTypeNum<1) ? prodTypeNum++ : prodTypeNum=0;
+ 
+
 
 // id = ObjectId('619ea5069365ba31cc27cfe0');
 // id = mongoose.Types.ObjectId('619ea5069365ba31cc27cfe0');  
@@ -292,24 +297,18 @@ async function get2plus(collect, res){
 
                         prodCard = new ProductCards( {
                             _id: new mongoose.Types.ObjectId(),
-                            productType: prodTypes[0]._id
+                            productType: prodTypes[prodTypeNum]._id
                             , //код типа продукта из справочника
                             productName: 'Продукт № '+i, //название продукта
                             productProp: 'String'+i,  // свойства продукта
-                            pic: 'Pic'+i,  //ссылка на файл изображения
+                            pic: 'Pic'+ picNo,  // ()=>{(picNo<6) ? (picNo++, return picNo ) : (picNo=0,return picNo )} //ссылка на файл изображения
                             productCost: 10*i, //цена
                             productEnable: 1,
                             productPromo: 1
 
                         });
 
-                        if (picNo<3){
-                            picNo++
-                        }
-
-                        else{picNo=0}
-
-                        prodCard.pic="Pic"+picNo;
+                        
 
 
                         prodCard.save()
