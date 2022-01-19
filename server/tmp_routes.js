@@ -51,7 +51,7 @@ async function get2plus(collect, res){
 
                     for (let i=1;i<51;i++) {
 
-                        //(picNo<6) ? picNo++ : picNo=0;
+                        (picNo<6) ? picNo++ : picNo=0;
                         (prodTypeNum<1) ? prodTypeNum++ : prodTypeNum=0;
  
 
@@ -69,7 +69,7 @@ async function get2plus(collect, res){
                             , //код типа продукта из справочника
                             productName: 'Продукт № '+i, //название продукта
                             productProp: 'String'+i,  // свойства продукта
-                            pic:  () => {picNo<6 ? 'Pic'+ picNo++  : picNo=0, 'Pic'+picNo}, //ссылка на файл изображения
+                            pic:  'Pic'+ picNo++ , //ссылка на файл изображения
                             productCost: 10*i, //цена
                             productEnable: 1,
                             productPromo: 1
