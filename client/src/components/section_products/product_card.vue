@@ -2,7 +2,9 @@
 
 <template>
     <div class="cardMainStyle myCardShadow ">
-        {{Item.productName}}
+        <p>{{Item.productName}}</p>
+        <p>{{Item.productType.productName}}</p>
+        
 
     </div>
     

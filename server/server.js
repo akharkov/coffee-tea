@@ -75,7 +75,10 @@ app.get('/news999', function (request, response) {
 
 
 app.get('/products', function (request, response) {
-    ProductCards.find({}).sort("productType").exec(function(err, docs){
+    ProductCards.find({})
+        .sort("productType")
+        .populate('productType')
+        .exec(function(err, docs){
         if(err){
             return console.log(err);
         }
