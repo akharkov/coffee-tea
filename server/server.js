@@ -88,7 +88,7 @@ app.get('/products', function (request, response) {
 })
 
 app.get("/--", function(req, res)  {
-    tmp_routers.get2minus(ProductCards, res);
+    tmp_routers.get2minus(productType, res);
 });
 
 /* эта функция просто создает N карточек продуктов..... */
@@ -156,6 +156,7 @@ const schemaProductType = new mongoose.Schema({
         _id: mongoose.Schema.Types.ObjectId,
         productType: String,  //код типа продукта
         productName: String,
+        productSection: Boolean, //true создает секцию на сайте
         productTypeEnable: Boolean,
         productTypeDateCreated: {
             type: Date,

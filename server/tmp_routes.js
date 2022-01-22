@@ -6,105 +6,108 @@
 async function get2plus(collect, res){
 
     let docCount=0;
-
-    const prodTypes = await productType.find();
-    console.log('prodTypes=',prodTypes); //[0]._id
-
-    /* 
-    prodTypes.forEach(item => {
-      console.log('prodTypes===',item._id);
-    }); 
-    
-    */
+    let typeDocCount=0;
 
 
-    await ProductCards.find()
-        .exec(function(err, Product_Cards) {
+    //const prodTypes = await productType.find();
+    //console.log('prodTypes=',prodTypes); //[0]._id
 
-            /* console.log('Product_Cards==',Product_Cards);
-            console.log('Product_Cards.length==',Product_Cards.length  );
-
-            console.log('ProductCards.countDocuments==',ProductCards.countDocuments() );
-            console.log('Product_Cards.countDocuments==',Product_Cards.proto ); */
-//
-            //ProductCards.estimatedDocumentCount(function (err, count) {
+    await productType.find({}).exec(function(err, product_Type) {
+        console.log(product_Type);
+        productType.estimatedDocumentCount(function (err, count) {
 
             if (err){
                 console.log(err)
             }else{
 
-                docCount = 0; //count;
-                
-                console.log("Estimated Count docCount= :", docCount);
+                typeDocCount = count;
+                            
+                /* await */ ProductCards.find({})
+                .exec(function(err, Product_Cards) {
 
-                if (docCount===0) {
-                    let prodCard;
+                    if (err){
+                        console.log(err)
+                    }else{
 
-                    var id ;
-                    let prodTypeNum=0;
-                    let picNo=0;
-  
-                    for (let i=1;i<51;i++) {
-
-                        (picNo<6) ? picNo++ : picNo=0;
-                        (prodTypeNum<1) ? prodTypeNum++ : prodTypeNum=0;
- 
-
-
-// id = ObjectId('619ea5069365ba31cc27cfe0');
-// id = mongoose.Types.ObjectId('619ea5069365ba31cc27cfe0');  
-// console.log('mongoose.Types.ObjectId(  ===  ',id);
-
-
-
-
-                        prodCard = new ProductCards( {
-                            _id: new mongoose.Types.ObjectId(),
-                            productType: prodTypes[prodTypeNum]._id
-                            , //код типа продукта из справочника
-                            productName: 'Продукт № '+i, //название продукта
-                            productProp: 'String'+i,  // свойства продукта
-                            pic: 'Pic'+ picNo++, //()=>{(picNo<6) ? picNo++ : picNo=0; return 'Pic'+picNo; },//'Pic'+ picNo++ , //ссылка на файл изображения
-                            productCost: 10*i, //цена
-                            productEnable: 1,
-                            productPromo: 1
-
-                        });
-
+                        docCount = 0; //count;
                         
+                        console.log("Estimated Count docCount= :", docCount);
+
+                        if (docCount===0) {
+                            let prodCard;
+
+                            var id ;
+                            let prodTypeNum=0;
+                            let picNo=0;
+
+                            console.log("===========================================")
+                            console.log("product_Type===",product_Type)
+                            console.log("===========================================",typeDocCount)
+
+                            for (let i=1;i<51;i++) {
+
+                                (picNo<6) ? picNo++ : picNo=0;
+                                (prodTypeNum<typeDocCount-1) ? prodTypeNum++ : prodTypeNum=0;
 
 
-                        prodCard.save()
-                            .then(function(doc){
-                                console.log("Сохранен объект", doc);
 
-                            })
-                            .catch(function (err){
-                                console.log('Ошибка!!!!!!!!!!!!!!!!!!!!!!!!!!   ',err);
-
-                            });
-                    }
-                }
+            // id = ObjectId('619ea5069365ba31cc27cfe0');
+            // id = mongoose.Types.ObjectId('619ea5069365ba31cc27cfe0');  
+            // console.log('mongoose.Types.ObjectId(  ===  ',id);
 
 
-                ProductCards.find({ productName: /кофе/i  }).limit(10)
-                    .exec( function (err, small) {
-                        if (err){
-                            console.log('Erroo = ',err);
-                            return err;}
-                        else{
-                            res.status(200).send(small); //json
-                            console.log("Данные отправленны",small);
-                            //ProductCards.collection.drop();
+
+                                prodCard = new ProductCards( {
+                                    _id: new mongoose.Types.ObjectId(),
+                                    productType: product_Type[prodTypeNum]._id
+                                    , //код типа продукта из справочника
+                                    productName: 'Продукт № '+i, //название продукта
+                                    productProp: 'String'+i,  // свойства продукта
+                                    pic: 'Pic'+ picNo++, //()=>{(picNo<6) ? picNo++ : picNo=0; return 'Pic'+picNo; },//'Pic'+ picNo++ , //ссылка на файл изображения
+                                    productCost: 10*i, //цена
+                                    productEnable: 1,
+                                    productPromo: 1
+
+                                });
+
+                                
+
+
+                                prodCard.save()
+                                    .then(function(doc){
+                                        console.log("Сохранен объект", doc);
+
+                                    })
+                                    .catch(function (err){
+                                        console.log('Ошибка!!!!!!!!!!!!!!!!!!!!!!!!!!   ',err);
+
+                                    });
+                            }
                         }
-                    });
 
 
+                        ProductCards.find({ productName: /кофе/i  }).limit(10)
+                            .exec( function (err, small) {
+                                if (err){
+                                    console.log('Erroo = ',err);
+                                    return err;}
+                                else{
+                                    res.status(200).send(small); //json
+                                    console.log("Данные отправленны",small);
+                                    //ProductCards.collection.drop();
+                                }
+                            });
+
+
+                    }
+                    //});
+
+                    //console.log(ProductCardss);
+                });
             }
-            //});
+        })
+    });
 
-            //console.log(ProductCardss);
-        });
 
 
 
@@ -115,9 +118,11 @@ async function get2plus(collect, res){
 // -- начало -- эта функция просто создает N карточек типов продуктов.....  техническая функция вне проекта
 async function get2minus(collect, res){
     let docCount;
-    await ProductCards.find({}).exec(function(err, Product_Cards) {
-        console.log(Product_Cards);
-        Product_Cards.estimatedDocumentCount(function (err, count) {
+    let cardCount ; cardCount=5;
+    
+    await productType.find({}).exec(function(err, product_Type) {
+        console.log(product_Type);
+        productType.estimatedDocumentCount(function (err, count) {
 
             if (err){
                 console.log(err)
@@ -127,49 +132,32 @@ async function get2minus(collect, res){
                 console.log("Estimated Count docCount= :", docCount);
 
                 if (docCount===0) {
+                    for(let j=1;j<=cardCount;j++ ){
 
-                    let prodType = new productType( {
-                        _id: new mongoose.Types.ObjectId(),
-                        productType: '0000000001',
-                        productName: 'Кофе',
-                        productTypeEnable: 0
 
-                    });
-
-                    prodType.save()
-                        .then(function(doc){
-                            console.log("Сохранен объект", doc);
-
-                        })
-                        .catch(function (err){
-                            console.log('Ошибка!!!!!!!!!!!!!!!!!!!!!!!!!!   ',err);
+                        let prodType = new productType( {
+                            _id: new mongoose.Types.ObjectId(),
+                            productType: '000000000'+j,
+                            productName: 'Кофе',
+                            productSection: true, 
+                            productTypeEnable: 0
 
                         });
 
+                        prodType.save()
+                            .then(function(doc){
+                                console.log("Сохранен объект", doc);
+
+                            })
+                            .catch(function (err){
+                                console.log('Ошибка!!!!!!!!!!!!!!!!!!!!!!!!!!   ',err);
+
+                            });
+                    }
+
                 }
 
-
-                /*
-                               Book.find({
-                                 title: /mvc/i
-                             }).sort('-created')
-                             .limit(5)
-                             .exec(function(err, books) {
-                                 if (err) throw err;
-
-                                 console.log(books);
-                             }); */
-                //.create
-                /*
-                                      _id: new mongoose.Types.ObjectId(),
-                                      coffeeName: `Какой-то кофе № ${docCount}`,
-                                      coffeeRegion: new mongoose.Types.ObjectId(),
-                                      detail: `Много много интересного`,
-                                      pic: "Картинка",
-                                      created:   new Date()
-                   */
-
-                ProductCards.find({
+                productType.find({
                     productName: /кофе/i
                 }).limit(10)
                     .exec( function (err, small) {
