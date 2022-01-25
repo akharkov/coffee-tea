@@ -121,7 +121,7 @@
 <style scoped>
   .mainsection {
       height: 98vh;
-      background: url("../../img/coffee/bgpromo3.jpg") no-repeat center top; 
+      background: url("../../img/backgrounds/bgpromo3.jpg") no-repeat center top; 
       background-size: cover;
       background-repeat:no-repeat;
       background-position: center center;

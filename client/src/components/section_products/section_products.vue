@@ -49,15 +49,16 @@ export default {
        
     },
     methods: {
-        getProductsPromise() {
-            fetch('/products')
+
+        getProductsPromise(productType) {
+            fetch("/products?"+productType) //,productType
                 .then(response => response.json())
                 .then(data => this.productsData = data)
         }
 
     },
     mounted(){
-        this.getProductsPromise();
+        this.getProductsPromise("0000000001");
     }
     
 }

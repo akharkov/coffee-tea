@@ -39,11 +39,11 @@ async function get2plus(collect, res){
                             var id ;
                             let prodTypeNum=0;
                             let picNo=0;
-
+/* 
                             console.log("===========================================")
                             console.log("product_Type===",product_Type)
                             console.log("===========================================",typeDocCount)
-
+ */
                             for (let i=1;i<51;i++) {
 
                                 (picNo<6) ? picNo++ : picNo=0;

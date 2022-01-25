@@ -64,17 +64,20 @@ app.get('/', function (request, response) {
 })
 
 app.get('/news999', function (request, response) {
+    
+
     News.find({}).sort("newsCreated").exec(function(err, docs){
         if(err){
             return console.log(err);
         }
-        console.log(docs);
+        //console.log(docs);
         response.send(docs);
     })
 })
 
 
 app.get('/products', function (request, response) {
+    console.log("============",request);
     ProductCards.find({})
         .sort("productType")
         .populate('productType')
@@ -82,7 +85,7 @@ app.get('/products', function (request, response) {
         if(err){
             return console.log(err);
         }
-        console.log(docs);
+        //console.log(docs);
         response.send(docs);
     })
 })
