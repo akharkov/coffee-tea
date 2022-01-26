@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-var tmp_routers = require("./tmp_routes.js");
+let tmp_routers = require("./tmp_routes.js");
 
 //================================ Разрешение CORS ============================================
 app.use(function (req, res, next) {
@@ -49,7 +49,7 @@ const urlencodedParser = bodyParser.urlencoded({
 
 //include("/js/block_mongo.js");
 const { MongoClient } = require("mongodb");
- mongoose = require('mongoose'); //убрал локализующее объявление CONST
+/* const */ mongoose = require('mongoose'); //убрал локализующее объявление CONST
 const { errorMonitor } = require('events');
 const { Console } = require('console');
 const { Schema } = mongoose;
@@ -101,6 +101,7 @@ app.get("/----", function(req, res)  {
 /* эта функция просто создает N карточек продуктов..... */
 
 app.get("/addnews", function(req, res)  {
+    console.log('идем создавать новости')
     tmp_routers.get2news(News, res);
 
 });
@@ -228,11 +229,12 @@ const schemaNews = new mongoose.Schema({
 
 
 //убрал локализующее объявление CONST
- productType = mongoose.model('productType', schemaProductType);
- ProductCards = mongoose.model('productCards', schemaProductCard);
- News = mongoose.model('News', schemaNews);
+/* const */ productType = mongoose.model('productType', schemaProductType);
+/* const */ ProductCards = mongoose.model('productCards', schemaProductCard);
+/* const */ News = mongoose.model('News', schemaNews);
 
-
+//export {mongoose, productType, ProductCards, News} //mongoose, 
+//module.exports = {mongoose, productType, ProductCards, News}
 
 
 

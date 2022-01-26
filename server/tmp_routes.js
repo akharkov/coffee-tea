@@ -1,4 +1,10 @@
 
+//import {mongoose, productType, ProductCards, News} from './server.js';
+/* 
+const mongoose = require('./server.js').mongoose;
+const productType = require('./server.js').productType;
+const ProductCards = require('./server.js').ProductCards;
+const News = require('./server.js').News; */
 
 
 
