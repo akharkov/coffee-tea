@@ -1,4 +1,4 @@
-
+"use strict";
 
 
 
@@ -18,13 +18,16 @@ const clusterUrl = `cluster0.5f8w9.mongodb.net/${dataBaseName}?retryWrites=true&
 const uri =  `mongodb+srv://${username}:${password}@${clusterUrl}/?authMechanism=${authMechanism}`;
 
 const app = express();
-
+// const mongoose = require('mongoose');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const tmp_routers = require("./tmp_routes.js");
+const mng_schemas = require("./mongoschemas.js");
 
-let tmp_routers = require("./tmp_routes.js");
+
+
 
 //================================ Разрешение CORS ============================================
 app.use(function (req, res, next) {
@@ -47,12 +50,13 @@ const urlencodedParser = bodyParser.urlencoded({
     extended: false,
 })
 
-//include("/js/block_mongo.js");
+
 const { MongoClient } = require("mongodb");
-/* const */ mongoose = require('mongoose'); //убрал локализующее объявление CONST
+
 const { errorMonitor } = require('events');
 const { Console } = require('console');
-const { Schema } = mongoose;
+const { Module } = require('module');
+const { Schema } = mng_schemas.mongoose;
 
 
 
@@ -63,10 +67,11 @@ app.get('/', function (request, response) {
     response.sendFile( 'index.html')
 })
 
+
 app.get('/news999', function (request, response) {
     
 
-    News.find({}).sort("newsCreated").exec(function(err, docs){
+    mng_schemas.News.find({}).sort("newsCreated").exec(function(err, docs){
         if(err){
             return console.log(err);
         }
@@ -75,10 +80,9 @@ app.get('/news999', function (request, response) {
     })
 })
 
-
 app.get('/products', function (request, response) {
-    console.log("============",request);
-    ProductCards.find({})
+    // console.log("============",request);
+    mng_schemas.ProductCards.find({})
         .sort("productType")
         .populate('productType')
         .exec(function(err, docs){
@@ -91,18 +95,19 @@ app.get('/products', function (request, response) {
 })
 
 app.get("/--", function(req, res)  {
-    tmp_routers.get2minus(productType, res);
+    tmp_routers.get2minus(mng_schemas.productType, res);
 });
 
 /* эта функция просто создает N карточек продуктов..... */
-app.get("/----", function(req, res)  {
-    tmp_routers.get2plus(ProductCards, res);
+app.get("/createCardProduct", function(req, res)  {
+    tmp_routers.createCardProduct(mng_schemas.ProductCards, res);
 });
 /* эта функция просто создает N карточек продуктов..... */
 
 app.get("/addnews", function(req, res)  {
     console.log('идем создавать новости')
-    tmp_routers.get2news(News, res);
+    
+    tmp_routers.get2news(mng_schemas.News, res);
 
 });
 //============================== Роуты end ===============================
@@ -130,7 +135,7 @@ const PORT = 5000
 async function run() {
     console.log("Цепляемся к базе")  ;
     try {
-        await mongoose.connect(uri,{
+        await mng_schemas.mongoose.connect(uri,{
             useNewUrlParser: true,
             useUnifiedTopology: true,
         },function (err) {
@@ -156,107 +161,13 @@ async function run() {
 run().catch(console.dir);
 
 
-const schemaProductType = new mongoose.Schema({
-        _id: mongoose.Schema.Types.ObjectId,
-        productType: String,  //код типа продукта
-        productName: String,
-        productSection: Boolean, //true создает секцию на сайте
-        productTypeEnable: Boolean,
-        productTypeDateCreated: {
-            type: Date,
-            default: Date.now}
-    },
-    {
-        writeConcern: {
-            w: 'majority',
-            j: true,
-            wtimeout: 1000
-        }
-    }  // этот объект исключил ошибку MongoWriteConcernError: No write concern mode named 'majority/' found in replica set configuration at MessageStream.messageHandler
+
+ //module.exports.mongoose = mongoose;
 
 
-);
-
-const schemaProductCard = new mongoose.Schema({
-        _id: mongoose.Schema.Types.ObjectId,
-        productType: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'productType'
-        },  //код типа продукта из справочника
-        productName: String, //название продукта
-        productProp: String,  // свойства продукта
-        pic: String,  //ссылка на файл изображения
-        productCost: Number, //цена
-        productEnable: Boolean,
-        productPromo: Boolean,
-        productDateCreated: {
-            type: Date,
-            default: Date.now}
-    },
-    {
-        writeConcern: {
-            w: 'majority',
-            j: true,
-            wtimeout: 1000
-        }
-    }  // этот объект исключил ошибку MongoWriteConcernError: No write concern mode named 'majority/' found in replica set configuration at MessageStream.messageHandler
-
-
-);
-
-const schemaNews = new mongoose.Schema({
-        _id: mongoose.Schema.Types.ObjectId,
-        newsTitle: String,  //код типа продукта
-        newsBody: String,
-        newsEnable: Boolean,
-        newsDateBegin: Date,
-        newsDateEnd: Date,
-        newsCreated: {
-            type: Date,
-            default: Date.now}
-    },
-    {
-        writeConcern: {
-            w: 'majority',
-            j: true,
-            wtimeout: 1000
-        }
-    }  // этот объект исключил ошибку MongoWriteConcernError: No write concern mode named 'majority/' found in replica set configuration at MessageStream.messageHandler
-
-
-);
-
-
-
-//убрал локализующее объявление CONST
-/* const */ productType = mongoose.model('productType', schemaProductType);
-/* const */ ProductCards = mongoose.model('productCards', schemaProductCard);
-/* const */ News = mongoose.model('News', schemaNews);
-
-//export {mongoose, productType, ProductCards, News} //mongoose, 
-//module.exports = {mongoose, productType, ProductCards, News}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ // module.exports.productType = productType;
+ // module.exports.ProductCards = ProductCards;
+ // module.exports.News = News;
 
 
 

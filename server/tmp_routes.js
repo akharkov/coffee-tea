@@ -1,15 +1,21 @@
-
+"use strict";
 //import {mongoose, productType, ProductCards, News} from './server.js';
-/* 
+ /* 
 const mongoose = require('./server.js').mongoose;
 const productType = require('./server.js').productType;
 const ProductCards = require('./server.js').ProductCards;
-const News = require('./server.js').News; */
+const News = require('./server.js').News; 
+ */
 
+// const productType = require('./server.js').productType;
+//const News = require('./server.js').News; 
+
+const srv = require('./server'); 
+const mng_schemas = require("./mongoschemas.js");
 
 
 // -- начало -- эта функция просто создает N карточек продуктов.....  техническая функция вне проекта
-async function get2plus(collect, res){
+async function createCardProduct(collect, res){
 
     let docCount=0;
     let typeDocCount=0;
@@ -18,9 +24,9 @@ async function get2plus(collect, res){
     //const prodTypes = await productType.find();
     //console.log('prodTypes=',prodTypes); //[0]._id
 
-    await productType.find({}).exec(function(err, product_Type) {
-        console.log(product_Type);
-        productType.estimatedDocumentCount(function (err, count) {
+    await mng_schemas.productType.find({}).exec(function(err, product_Type) {
+        //console.log(mng_schemas.product_Type);
+        mng_schemas.productType.estimatedDocumentCount(function (err, count) {
 
             if (err){
                 console.log(err)
@@ -28,7 +34,7 @@ async function get2plus(collect, res){
 
                 typeDocCount = count;
                             
-                /* await */ ProductCards.find({})
+                /* await */ mng_schemas.ProductCards.find({})
                 .exec(function(err, Product_Cards) {
 
                     if (err){
@@ -63,8 +69,8 @@ async function get2plus(collect, res){
 
 
 
-                                prodCard = new ProductCards( {
-                                    _id: new mongoose.Types.ObjectId(),
+                                prodCard = new mng_schemas.ProductCards( {
+                                    _id: new mng_schemas.mongoose.Types.ObjectId(),
                                     productType: product_Type[prodTypeNum]._id
                                     , //код типа продукта из справочника
                                     productName: 'Продукт № '+i, //название продукта
@@ -92,7 +98,7 @@ async function get2plus(collect, res){
                         }
 
 
-                        ProductCards.find({ productName: /кофе/i  }).limit(10)
+                        mng_schemas.ProductCards.find({ productName: /кофе/i  }).limit(10)
                             .exec( function (err, small) {
                                 if (err){
                                     console.log('Erroo = ',err);
@@ -126,9 +132,9 @@ async function get2minus(collect, res){
     let docCount;
     let cardCount ; cardCount=5;
     
-    await productType.find({}).exec(function(err, product_Type) {
-        console.log(product_Type);
-        productType.estimatedDocumentCount(function (err, count) {
+    await mng_schemas.productType.find({}).exec(function(err, product_Type) {
+        //console.log(mng_schemas.product_Type);
+        mng_schemas.productType.estimatedDocumentCount(function (err, count) {
 
             if (err){
                 console.log(err)
@@ -141,8 +147,8 @@ async function get2minus(collect, res){
                     for(let j=1;j<=cardCount;j++ ){
 
 
-                        let prodType = new productType( {
-                            _id: new mongoose.Types.ObjectId(),
+                        let prodType = new mng_schemas.productType( {
+                            _id: new mng_schemas.mongoose.Types.ObjectId(),
                             productType: '000000000'+j,
                             productName: 'Кофе',
                             productSection: true, 
@@ -192,8 +198,10 @@ async function get2minus(collect, res){
 // -- начало -- эта функция просто создает N карточек новостей.....  техническая функция вне проекта
 async function get2news(collect, res){
     let docCount;
-    await News.find({}).exec(function(err, News_Cards) {
-        console.log(collect);
+
+    //console.log("2) News======= ",mng_schemas.News);
+    await mng_schemas.News.find({}).exec(function(err, News_Cards) {
+        //console.log(collect);
         collect.estimatedDocumentCount(function (err, count) {
 
             if (err){
@@ -211,7 +219,7 @@ const fillText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
                     let newsCard;
                     for (i=1;i<11;i++) {
                         newsCard = new collect( {
-                            _id: new mongoose.Types.ObjectId(),
+                            _id: new mng_schemas.mongoose.Types.ObjectId(),
                             newsTitle: "Новость № "+i,  //код типа продукта
                             newsBody: i+") Много интересного "+fillText,
                             newsEnable: 1,
@@ -233,7 +241,7 @@ const fillText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
 
 
 
-                News.find({
+                mng_schemas.News.find({
                     newsTitle: /кофе/i
                 }).limit(10)
                     .exec( function (err, small) {
@@ -262,6 +270,7 @@ const fillText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
 
 
 
-module.exports.get2plus = get2plus;
+module.exports.createCardProduct = createCardProduct;
 module.exports.get2minus = get2minus;
 module.exports.get2news = get2news
+ 

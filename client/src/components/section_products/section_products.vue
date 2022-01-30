@@ -14,7 +14,7 @@
             <div class="row " style="margin:0">
                 <div class="col-1"></div>
                 <div class="col-10 productCards myShadow" style="overflow-y:scroll;">
-                    <div class="row" v-cloak>
+                    <div class="row justify-content-between" v-cloak>
                         <product_card class="col-2" v-for="Item in productsData" :key="Item.id" :Item="Item" style="max-height: 100%;  text-overflow: ellipsis;"> 
                             
 
