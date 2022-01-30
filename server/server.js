@@ -65,7 +65,7 @@ const { Schema } = mng_schemas.mongoose;
 //============================== Роуты start ===============================
 app.get('/', function (request, response) {
     response.sendFile( 'index.html')
-})
+});
 
 
 app.get('/news999', function (request, response) {
@@ -110,6 +110,23 @@ app.get("/addnews", function(req, res)  {
     tmp_routers.get2news(mng_schemas.News, res);
 
 });
+
+
+
+ 
+app.get('*', function (req, res) {
+        //app.use('/', express.static(path.join(__dirname, 'client', 'build')));
+        if(req.params[0].includes('/images/')){
+            console.log(`Запросили картинку ${req.params[0]}`);
+            
+            console.log(`Отдаем файл ${__dirname}${req.params[0]}`);
+            res.sendFile(`${__dirname}${req.params[0]}`);
+        }
+        else{
+
+            //res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+        };
+}); 
 //============================== Роуты end ===============================
 
 
@@ -118,9 +135,11 @@ app.get("/addnews", function(req, res)  {
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'client', 'build')))
+    
 
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+        
     })
 }
 

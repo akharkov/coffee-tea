@@ -2,7 +2,7 @@
 
 
 <template>
-    <section class=" mainProductSection" > 
+    <section class=" mainProductSection" style="margin:0; overflow-y: hidden" > 
       
             <div class="row " style="margin:0">
                 <div class="col-1"></div>
@@ -11,11 +11,11 @@
                 </div>      
 
             </div>       
-            <div class="row " style="margin:0">
+            <div class="row " style="margin:0; overflow-y: hidden">
                 <div class="col-1"></div>
                 <div class="col-10 productCards myShadow" style="overflow-y:scroll;">
-                    <div class="row justify-content-between" v-cloak>
-                        <product_card class="col-2" v-for="Item in productsData" :key="Item.id" :Item="Item" style="max-height: 100%;  text-overflow: ellipsis;"> 
+                    <div class="row justify-content-around" v-cloak>
+                        <product_card class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" v-for="Item in productsData" :key="Item.id" :Item="Item" style="max-height: 100%;  text-overflow: ellipsis;"> 
                             
 
                         </product_card>

@@ -75,7 +75,7 @@ async function createCardProduct(collect, res){
                                     , //код типа продукта из справочника
                                     productName: 'Продукт № '+i, //название продукта
                                     productProp: 'String'+i,  // свойства продукта
-                                    pic: 'Pic'+ picNo++, //()=>{(picNo<6) ? picNo++ : picNo=0; return 'Pic'+picNo; },//'Pic'+ picNo++ , //ссылка на файл изображения
+                                    pic: 'pic'+ picNo++, //()=>{(picNo<6) ? picNo++ : picNo=0; return 'Pic'+picNo; },//'Pic'+ picNo++ , //ссылка на файл изображения
                                     productCost: 10*i, //цена
                                     productEnable: 1,
                                     productPromo: 1
