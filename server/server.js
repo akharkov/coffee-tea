@@ -119,8 +119,8 @@ app.get('*', function (req, res) {
         if(req.params[0].includes('/images/')){
             console.log(`Запросили картинку ${req.params[0]}`);
             
-            console.log(`Отдаем файл ${__dirname}${req.params[0]}`);
-            res.sendFile(`${__dirname}${req.params[0]}`);
+            console.log(`Отдаем файл ${__dirname}/client/src/${req.params[0]}`);
+            res.sendFile(`${__dirname}/client/src/${req.params[0]}`);
         }
         else{
 
@@ -152,6 +152,9 @@ const PORT = 5000
 
 
 async function run() {
+    console.log("=======================================================");
+    console.log("=========     Server starting     =====================");
+    console.log("=======================================================");
     console.log("Цепляемся к базе")  ;
     try {
         await mng_schemas.mongoose.connect(uri,{
