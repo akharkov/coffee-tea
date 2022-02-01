@@ -94,6 +94,22 @@ app.get('/products', function (request, response) {
     })
 })
 
+
+app.get('/productslist', function (request, response) {
+    // console.log("============",request);
+    mng_schemas.productType.find({})
+        .sort("productType")
+        //.populate('productType')
+        .exec(function(err, docs){
+        if(err){
+            return console.log(err);
+        }
+        //console.log(docs);
+        response.send(docs);
+    })
+})
+
+
 app.get("/--", function(req, res)  {
     tmp_routers.get2minus(mng_schemas.productType, res);
 });
