@@ -2,7 +2,7 @@
 
 <!-- productsTypeList -->
     <div>
-    <section_products v-for="Item in productsTypeList" :key="Item.id" :Item="Item">  </section_products>    
+        <section_products v-for="Item in productsTypeList" :key="Item.id" :propsItem="Item.productName">  </section_products>    
     </div>
 </template>
 
@@ -37,6 +37,7 @@ export default {
     },
     mounted(){
         this.getProductsListPromise("0000000001");
+        console.log(`+++ Props: ${this.$props}`);
     }
     
 }

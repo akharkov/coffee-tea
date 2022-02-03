@@ -7,7 +7,7 @@
             <div class="row " style="margin:0">
                 <div class="col-1"></div>
                 <div class="col-10  titleProducts myShadow">
-                    {{mess}}
+                    {{propsItem}} 
                 </div>      
 
             </div>       
@@ -33,13 +33,13 @@
     /* import news_card from '@/components/section_products/product_card'; */
 export default {
     name:"section_products",
-    props:[],
+    props:["propsItem"],
     components:{
         
     },
     data: function () {
         return {
-        mess: "Здесь будет инфа о продукте!!!",
+        mess: propsItem._Id,
         productsData: []
         }
     },
@@ -58,7 +58,8 @@ export default {
 
     },
     mounted(){
-        this.getProductsPromise("0000000001");
+        this.getProductsPromise(this.mess);
+        //console.log(`===+++ Props: ${this.$props}`);
     }
     
 }
