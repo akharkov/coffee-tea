@@ -2,7 +2,7 @@
 
 <!-- productsTypeList -->
     <div>
-        <section_products v-for="Item in productsTypeList" :key="Item.id" :propsItem="Item.productName">  </section_products>    
+        <section_products v-for="Item in productsTypeList" :key="Item.id" :propsItem="Item._id">  </section_products>    
     </div>
 </template>
 

@@ -81,8 +81,9 @@ app.get('/news999', function (request, response) {
 })
 
 app.get('/products', function (request, response) {
-    // console.log("============",request);
-    mng_schemas.ProductCards.find({})
+    // отбирает из базы карточки продуктов одного типа 
+    // переданного через параметр строки URL request.query.data
+    mng_schemas.ProductCards.find({productType : request.query.data})
         .sort("productType")
         .populate('productType')
         .exec(function(err, docs){

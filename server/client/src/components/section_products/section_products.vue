@@ -39,7 +39,7 @@ export default {
     },
     data: function () {
         return {
-        mess: propsItem._Id,
+        mess: "propsItem._Id",
         productsData: []
         }
     },
@@ -51,15 +51,15 @@ export default {
     methods: {
 
         getProductsPromise(productType) {
-            fetch("/products?"+productType) //,productType
+            fetch("/products?data="+productType) //,productType
                 .then(response => response.json())
                 .then(data => this.productsData = data)
         }
 
     },
     mounted(){
-        this.getProductsPromise(this.mess);
-        //console.log(`===+++ Props: ${this.$props}`);
+        this.getProductsPromise(this.$props.propsItem);
+        console.log(`===+++ Props: ${this.$props.propsItem}`);
     }
     
 }
