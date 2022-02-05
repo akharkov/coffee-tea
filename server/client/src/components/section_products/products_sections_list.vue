@@ -2,7 +2,7 @@
 
 <!-- productsTypeList -->
     <div>
-        <section_products v-for="Item in productsTypeList" :key="Item.id" :propsItem="Item._id">  </section_products>    
+        <section_products v-for="Item in productsTypeList" :key="Item.id" :propsItem="Item">  </section_products>    
     </div>
 </template>
 
@@ -29,6 +29,8 @@ export default {
     methods: {
 
         getProductsListPromise(productListParam) {
+
+            
             fetch("/productslist?"+productListParam) //,productType
                 .then(response => response.json())
                 .then(data => this.productsTypeList = data)

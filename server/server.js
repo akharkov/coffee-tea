@@ -83,7 +83,10 @@ app.get('/news999', function (request, response) {
 app.get('/products', function (request, response) {
     // отбирает из базы карточки продуктов одного типа 
     // переданного через параметр строки URL request.query.data
-    mng_schemas.ProductCards.find({productType : request.query.data})
+    //console.log(request.query.data);
+    const strToObj = JSON.parse(request.query.data); //приводим строку параметров к объекту
+    //console.log(`strToObj===${strToObj}`);
+    mng_schemas.ProductCards.find({productType : strToObj._id/* request.query.data */})
         .sort("productType")
         .populate('productType')
         .exec(function(err, docs){

@@ -7,7 +7,7 @@
             <div class="row " style="margin:0">
                 <div class="col-1"></div>
                 <div class="col-10  titleProducts myShadow">
-                    {{propsItem}} 
+                    {{propsItem.productName}} 
                 </div>      
 
             </div>       
@@ -51,7 +51,9 @@ export default {
     methods: {
 
         getProductsPromise(productType) {
-            fetch("/products?data="+productType) //,productType
+            //разворачиваем объект в строку параметров
+            const objQuery = JSON.stringify(productType); 
+            fetch("/products?data="+objQuery/* productType._id */) //,productType
                 .then(response => response.json())
                 .then(data => this.productsData = data)
         }
