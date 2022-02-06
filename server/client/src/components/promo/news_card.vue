@@ -4,31 +4,6 @@
          {{Item.newsTitle}} 
         <p > {{Item.newsBody | truncate(150,"...")}} </p> 
         
-
-<!-- 
-       <fullscreennews v-bind:itemNews="Item" class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()" >
-           
-       </fullscreennews> 
- -->
-
-<!-- <div class="myModalBackground" v-show="isModalVisible"  @close="closeModal" v-on:click="closeModal()">
-
-    <div class="myModalNews" v-on:click="closeModal()">
-        <div class="row" > 
-            X
-        </div>
-        <div class="row">
-            <div class="col">
-                {{Item.newsBody}}
-            </div>
-            
-        </div>
-        
-
-    </div>
-
-</div>
- -->
     </div>
     
     
@@ -92,16 +67,7 @@
 
                 //alert(Item.newsBody);
                 this.showModal();
-    /* 
-                // `this` внутри методов указывает на экземпляр Vue
-                    alert('Привет, ' + this.name + '!'+event)
-                // `event` — нативное событие DOM
-                    if (event) {
-                        alert(event.target.tagName)
-                        
-
-                    }
-    */       
+    
             }
         },
         mounted() {

@@ -76,7 +76,7 @@
         
     },
     mounted(){
-alert("ggggggggg");
+      //alert("ggggggggg");
     }
   };
 </script>

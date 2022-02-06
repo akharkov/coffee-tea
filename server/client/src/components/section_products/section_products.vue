@@ -2,12 +2,13 @@
 
 
 <template>
-    <section class=" mainProductSection" style="margin:0; overflow-y: hidden" > 
+    <section :id="propsItem._id" class=" mainProductSection" style="margin:0; overflow-y: hidden" > 
       
             <div class="row " style="margin:0">
                 <div class="col-1"></div>
                 <div class="col-10  titleProducts myShadow">
-                    {{propsItem.productName}} 
+                    <h3>{{propsItem.productName}} </h3>
+                    
                 </div>      
 
             </div>       
@@ -68,6 +69,15 @@ export default {
 </script>
 
 <style scoped>
+
+    h3{
+        font-family: Lobster;
+        color: rgba(10, 37, 190, 0.931);
+        text-shadow: 1px 1px 0 #f1e9e9, 2px 2px 0 #4e4a4a;
+
+    }
+
+
     .mainProductSection{
         
         height: 98vh; 
@@ -80,6 +90,9 @@ export default {
     }
 
     .titleProducts{
+       
+        
+
         margin: 10px;
         
         height: 100px;
@@ -105,10 +118,10 @@ export default {
     }
 
 /* ======== */
- .productCards::-webkit-scrollbar {
-  width: 10px;
-  background-color: #44701b25;
-}
+    .productCards::-webkit-scrollbar {
+        width: 10px;
+        background-color: #44701b25;
+        }
 /* бегунок */
 .productCards::-webkit-scrollbar-thumb {
   border-radius: 10px;

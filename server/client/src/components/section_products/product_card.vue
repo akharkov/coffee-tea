@@ -8,8 +8,24 @@
             
 
         </div>
-        <p>{{Item.productName}}</p>
-        <p>{{Item.productType.productName}}</p>
+
+        <div class="cardBody">
+            <div class="cardProductTitle">
+                {{Item.productName}}
+            </div>
+       
+            {{Item.productProp | truncate(100,"...")}}
+        <!-- <p>{{Item.productType.productName}}</p> -->
+
+        </div>
+
+        <div class="cardFooter">
+
+
+        </div>
+   
+
+        
         
 
     </div>
@@ -30,6 +46,15 @@ export default {
     componens:{
             
         },
+    filters: {
+        truncate: function (text, length, suffix) {
+            if (text.length > length) {
+                return text.substring(0, length) + suffix;
+            } else {
+                return text;
+            }
+        },
+    },
     methods:{
 
     },
@@ -40,7 +65,7 @@ export default {
         return
       } */
       //const fileName = `../../assets/images/coffee/pic2.jpg` //${this.Item.pic}
-      const fileName = `../../assets/images/${this.Item.productType.productPicPath}/${this.Item.pic}.jpg` //${this.Item.pic}
+      const fileName = `../../assets/images/${this.Item.productType.productPicPath}/${this.Item.pic}` //${this.Item.pic}
       //this.Item.pic; //.toLowerCase()
 
 
@@ -75,6 +100,7 @@ export default {
     }
 
     .productPic{
+        /* background: rgba(253, 253, 253, 0); */
         border-radius: 5%;
         max-width: 100%;
         height: 50%;
@@ -87,6 +113,7 @@ export default {
     }
 
     .productPic img {
+        /* background: rgba(253, 253, 253, 0); */
         border-radius: 5%;
         width: 100%;
         height: 100%;
@@ -101,6 +128,34 @@ export default {
 -moz-box-shadow: inset 9px 9px 30px -12px rgba(0,0,0,0.7);
 box-shadow: inset 9px 9px 30px -12px rgba(0,0,0,0.7); */
         }
+
+    .cardBody{
+        overflow: hidden;
+    }    
+    .cardBody .cardProductTitle {
+        color: rgb(144, 107, 245);
+
+
+        /* font-family: Gotham Pro Kondolar-Regular, Georgia, serif; */
+        /* font-family: Kondolar-Regular ; */
+        text-shadow: 1px 1px 0 #f1e9e9, 2px 2px 0 #4e4a4a;
+
+        /* color: #efebeb; *//* 
+        text-shadow: -1px 0 0 #101010, 1px 1px 0 #1b1a1a, 2px -1px 0 #1d1d1d, 3px 0 0 #1d1c1c;
+ */
+    }
+    .cardBody .cardFooter{
+    
+        position:absolute;
+        bottom:0;
+        /* width:90%; */
+        max-width: 100%;
+        height:5%;   /* Высота блока "footer" */
+        background:rgba(250, 249, 249, 0.5); 
+    }
+
+
+
 
 /* Не используйте шрифты с засечками в инфографике;
 Достаточно универсальный шрифт — Montserrat, пользуйтесь им;

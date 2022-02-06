@@ -29,13 +29,11 @@ export default {
     methods: {
 
         getProductsListPromise(productListParam) {
-
-            
             fetch("/productslist?"+productListParam) //,productType
                 .then(response => response.json())
-                .then(data => this.productsTypeList = data)
+                .then(data => this.productsTypeList = data) // формируем список типов продуктов
+                .then(data=>this.$store.commit('navModify',this.productsTypeList)) // передаем список типов продуктов в store (vueX) для формирования меню
         }
-
     },
     mounted(){
         this.getProductsListPromise("0000000001");

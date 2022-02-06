@@ -12,6 +12,31 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" 
+                v-for="menuItem in this.$store.state.navDataObj" 
+                :key="menuItem._id">
+
+                <a class="nav-link" :href="menuItem.refLink"> <!-- productName -->
+                  {{menuItem.productName}} <span class="sr-only">(текущая)</span>
+                </a>
+              
+            </li>
+            <li class="nav-item active" >
+                <a class="nav-link" href="#"> <!-- productName -->
+                  Опт <span class="sr-only">(текущая)</span>
+                </a>
+            </li>
+      
+
+      </ul>
+
+
+
+    </div>
+
+<!-- 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Главная <span class="sr-only">(текущая)</span></a>
         </li>
@@ -37,7 +62,7 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
       </form>
-    </div>
+    </div> -->
   </nav>
 
 </div>
@@ -53,23 +78,8 @@ export default {
     
         return{
            
-            navbarData:{
-
-
-
-                cardId:"",
-                newsTitle:"",
-                newsBody:"Ну очень интересно "
-                    +"Lorem ipsum dolor sit,"
-                    +"amet consectetur adipisicing elit."
-                    +"Corrupti nemo eaque totam eos,"
-                    +"dignissimos sint molestias ullam a"
-                    +"consequatur officiis illo nisi quae eum",
-                newsEnable:1, 
-                newsDateBegin:Date.now, 
-                newsDateEnd:Date.now,
-                newsCreated:Date.now
-                
+            navBarData:{
+              navStructure:{}                
                 
 
             }

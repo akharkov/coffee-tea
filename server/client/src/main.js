@@ -33,17 +33,29 @@ const store = new Vuex.Store({
   state: {
     count: 0,
     isModalVisibleNews: false,
-    tmpObj: {}
+    tmpObj: {},
+    navDataObj: {}
   },
   mutations: {
     increment (state) {
       state.count++
     },
-    tmpObjAssign(state, newsItem){
-      state.tmpObj = newsItem;
+    navModify(state, navData){
+      state.navDataObj = navData;
+      
+      for (var key in state.navDataObj) {
+        state.navDataObj[key].refLink = `#${state.navDataObj[key]._id}`;
+        console.log(`state.navDataObj = ${state.navDataObj[key].refLink}`);
+      }  
+
+
+
+      
       
 
-
+    },
+    tmpObjAssign(state, newsItem){
+      state.tmpObj = newsItem;
     },
     fullNewsVisible(state){
       state.isModalVisibleNews = true;
