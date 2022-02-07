@@ -128,19 +128,62 @@ async function createCardProduct(collect, res){
 };
 // -- конец -- эта функция просто создает N карточек продуктов.....  техническая функция вне проекта
 
+// -- начало -- эта функция просто создает N карточек подтипов продуктов.....  техническая функция вне проекта
+async function getSubTypeProductsAdd(collect, res){
+
+    let docCount=-1;
+    let cardCount ; cardCount=5;
+
+    docCount = mng_schemas.productType.estimatedDocumentCount(function (err, count) {
+        if (err){
+            console.log(`Вылезла ошибочка в подсчете числа документов productType ${err}`);
+            throw err;
+        }
+        else{
+            
+
+            console.log(`count productType== ${count}`); 
+
+        }
+    });
+
+     await mng_schemas.productType.find({}).exec(function(err, DocsType) {
+        if (err){
+            console.log(`Вылезла ошибочка ${err}`);
+            throw err;
+        }
+        else{
+            
+
+            console.log(`countDocType== ${DocsType}`); 
+
+        }
+        
+        
+    })
+  
+
+    //console.log(`Посчитали docCount в productType = ${docCount}`);
+
+
+    
+
+    
+}
+
+
 // -- начало -- эта функция просто создает N карточек типов продуктов.....  техническая функция вне проекта
 async function get2minus(collect, res){
     let docCount;
     let cardCount ; cardCount=5;
     
     await mng_schemas.productType.find({}).exec(function(err, product_Type) {
-        //console.log(mng_schemas.product_Type);
+       
         mng_schemas.productType.estimatedDocumentCount(function (err, count) {
 
             if (err){
                 console.log(err)
             }else{
-
                 docCount = count;
                 console.log("Estimated Count docCount= :", docCount);
 
@@ -272,6 +315,7 @@ const fillText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
 
 
 module.exports.createCardProduct = createCardProduct;
+module.exports.getSubTypeProductsAdd = getSubTypeProductsAdd;
 module.exports.get2minus = get2minus;
 module.exports.get2news = get2news
  

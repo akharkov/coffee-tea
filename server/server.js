@@ -113,7 +113,7 @@ app.get('/productslist', function (request, response) {
     })
 })
 
-
+/* эта функция просто создает N карточек типов продуктов..... */
 app.get("/--", function(req, res)  {
     tmp_routers.get2minus(mng_schemas.productType, res);
 });
@@ -123,6 +123,17 @@ app.get("/createCardProduct", function(req, res)  {
     tmp_routers.createCardProduct(mng_schemas.ProductCards, res);
 });
 /* эта функция просто создает N карточек продуктов..... */
+
+/* эта функция просто создает N карточек подтипов продуктов..... */
+app.get("/createSubType", function(req, res)  {
+    tmp_routers.getSubTypeProductsAdd(mng_schemas.productSubType, res);
+});
+/* эта функция просто создает N карточек продуктов..... */
+
+
+
+
+
 
 app.get("/addnews", function(req, res)  {
     console.log('идем создавать новости')
