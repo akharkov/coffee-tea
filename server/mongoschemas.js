@@ -41,7 +41,7 @@ const schemaProductSubType = new mongoose.Schema({
     },  //код типа продукта из справочника
     productSubType: String,  //код типа продукта
     productSubTypeName: String,
-    productTypeDateCreated: {
+    productSubTypeDateCreated: {
         type: Date,
         default: Date.now}
     },

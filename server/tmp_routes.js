@@ -12,7 +12,7 @@ const News = require('./server.js').News;
 
 const srv = require('./server'); 
 const mng_schemas = require("./mongoschemas.js");
-
+const cardSubTypeCount=3;
 
 // -- начало -- эта функция просто создает N карточек продуктов.....  техническая функция вне проекта
 async function createCardProduct(collect, res){
@@ -134,34 +134,92 @@ async function getSubTypeProductsAdd(collect, res){
     let docCount=-1;
     let cardCount ; cardCount=5;
 
-    docCount = mng_schemas.productType.estimatedDocumentCount(function (err, count) {
+     mng_schemas.productType.estimatedDocumentCount(function (err, count) {
         if (err){
             console.log(`Вылезла ошибочка в подсчете числа документов productType ${err}`);
             throw err;
         }
-        else{
+        else{ if(count>0){
+            console.log(`count productType== ${count}`);
+            mng_schemas.productType.find({}).exec(
+                function(err,typeDocs){
+                    if(err){
+                        console.log(`Ошибочка вылезла при отборе типов документов ${err}`);
+                    } else{
+                        typeDocs.forEach(element => {
+                            mng_schemas.productSubType.find({_id:element._id}).exec(
+                                function(err,subTypeDocs){
+                                    if(err){
+                                        console.log(`Ошибочка. Не отобрались подтипы ${err}`);
+                                    }
+                                    else{
+                                        console.log(`Прошли в отбор подтипов. выбрано ${subTypeDocs.length} документов`);
+                                        if(subTypeDocs.length===0){
+                                            let subTypeCard;
+                                            console.log(`Будем добавлять подтипы для ${element}`);
+                                            for(let j=1;j<=cardSubTypeCount;j++ ){
+                                                //mng_schemas.productSubType
+                                                subTypeCard = new mng_schemas.productSubType( {
+                                                    _id: new mng_schemas.mongoose.Types.ObjectId(),
+                                                    productType: element._id, //id типа продукта из справочника
+                                                    productSubType: `${element.productType}_${j}`,  //код типа продукта
+                                                    productSubTypeName: `подтип ${j} ${element.productName}`
+/* 
+                                                        productSubType: `${element.productType}_${j}`,  //код типа продукта
+                                                        productSubTypeName: `подтип ${j} ${element.productName}`,                                                  
+*/
+                                                });
+                                    subTypeCard.save()
+                                    .then(function(doc){
+                                        console.log("Сохранен объект", doc);
+
+                                    })
+                                    .catch(function (err){
+                                        console.log('Ошибка!!!!!!!!!!!!!!!!!!!!!!!!!!   ',err);
+
+                                    });
+/* 
+    _id: mongoose.Schema.Types.ObjectId,
+    productType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'productType'
+    },  //код типа продукта из справочника
+    productSubType: String,  //код типа продукта
+    productSubTypeName: String,
+    productTypeDateCreated: {
+        type: Date,
+        default: Date.now}
+ */
+
+                                            }
+                                            
+
+
+                                        } else{
+                                            console.log(`Сначала надо удалить подтипы для ${element}`);
+                                        }
+
+
+                                    };
+
+                                });
+                        });
+                        
+                    }
+
+                });
+            
+            
+        } else{
+            console.log(`===count productType== ${count}`); 
+        }
             
 
-            console.log(`count productType== ${count}`); 
+            
 
         }
     });
 
-     await mng_schemas.productType.find({}).exec(function(err, DocsType) {
-        if (err){
-            console.log(`Вылезла ошибочка ${err}`);
-            throw err;
-        }
-        else{
-            
-
-            console.log(`countDocType== ${DocsType}`); 
-
-        }
-        
-        
-    })
-  
 
     //console.log(`Посчитали docCount в productType = ${docCount}`);
 
