@@ -19,14 +19,17 @@
 
         </div>
 
-        <div class="cardFooter">
+        <div class="row cardFooter">
 
+<!--             <div class="col-1">                
+                <img src="../../assets/icons/finger_down.png" alt=""  > 
+            </div>
+            <div class="col-9">2</div>
+            <div class="col-1 vote_up">                
+                <img src="../../assets/icons/finger_up.png" alt=""  > 
+            </div> -->
 
         </div>
-   
-
-        
-        
 
     </div>
     
@@ -131,6 +134,7 @@ box-shadow: inset 9px 9px 30px -12px rgba(0,0,0,0.7); */
 
     .cardBody{
         overflow: hidden;
+        
     }    
     .cardBody .cardProductTitle {
         color: rgb(144, 107, 245);
@@ -144,18 +148,30 @@ box-shadow: inset 9px 9px 30px -12px rgba(0,0,0,0.7); */
         text-shadow: -1px 0 0 #101010, 1px 1px 0 #1b1a1a, 2px -1px 0 #1d1d1d, 3px 0 0 #1d1c1c;
  */
     }
-    .cardBody .cardFooter{
-    
+    /* .cardBody */ .cardFooter{
+        margin: 0;
+
         position:absolute;
         bottom:0;
         /* width:90%; */
         max-width: 100%;
-        height:5%;   /* Высота блока "footer" */
+        height:15%;   /* Высота блока "footer" */
         background:rgba(250, 249, 249, 0.5); 
+        
     }
 
 
+.vote_up{
+   
+ background-color: rgba(34, 60, 80, 0.3);
+ background-image: url('../../assets/icons/finger_up.png') ;
+  background-size: contain ;
+  background-repeat: no-repeat;
 
+  /* object-fit: cover; */
+    /* height: 100%;
+    width: 100%; */
+} 
 
 /* Не используйте шрифты с засечками в инфографике;
 Достаточно универсальный шрифт — Montserrat, пользуйтесь им;
