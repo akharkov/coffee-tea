@@ -89,6 +89,7 @@ app.get('/products', function (request, response) {
     mng_schemas.ProductCards.find({productType : strToObj._id/* request.query.data */})
         .sort("productType")
         .populate('productType')
+        .populate('productSubType')
         .exec(function(err, docs){
         if(err){
             return console.log(err);

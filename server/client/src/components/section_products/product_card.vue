@@ -12,9 +12,14 @@
         <div class="cardBody">
             <div class="cardProductTitle">
                 {{Item.productName}}
+                
+
+            </div>
+            <div>
+                {{Item.productSubType.productSubTypeName}}
             </div>
        
-            {{Item.productProp | truncate(100,"...")}}
+            {{Item.productProp | truncate(80,"...")}}
         <!-- <p>{{Item.productType.productName}}</p> -->
 
         </div>

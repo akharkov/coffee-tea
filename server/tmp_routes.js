@@ -64,7 +64,7 @@ async function createCardProduct(collect, res){
                             console.log("===========================================",typeDocCount)
  */
 
-                            for (let i=1;i<6;i++) {
+                            for (let i=1;i<51;i++) {
 
                                 (picNo<6) ? picNo++ : picNo=0;
                                 (prodTypeNum<typeDocCount-1) ? prodTypeNum++ : prodTypeNum=0;
@@ -131,15 +131,25 @@ async function createCardProduct(collect, res){
 
 function subTypeValue(typeProd){
     let subArray=[];
-    if(subTypeCount<3) {subTypeCount++;}
-    else {subTypeCount=0;};    
+    if(subTypeCount<2) {subTypeCount++;}
+    else {subTypeCount=0;}; 
+
+
+    // arrayProdSubType = await mng_schemas.productSubType.find({});
+    
+
+
+
+
+
+
     subArray = arrayProdSubType.filter(function(arrayRec){
         let a1, a2;
         a1=`${arrayRec.productType}`;
         a2=`${typeProd}`;
         console.log(`arrayRec.productType===typeProd a1=${a1} a2=${a2}`);
         console.log(`arrayRec.productType=?=typeProd ${a1===a2}`);
-      return  a1===a2;
+      return  a1===a2; 
     });
 console.log(`subArray== ${subArray} для ${typeProd} `);
 return subArray[subTypeCount];
