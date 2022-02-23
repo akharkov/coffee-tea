@@ -102,7 +102,7 @@ app.get('/products', function (request, response) {
 
 app.get('/productslist', function (request, response) {
     // console.log("============",request);
-    mng_schemas.productType.find({})
+    mng_schemas.productType.find({productSection:true})
         .sort("productType")
         //.populate('productType')
         .exec(function(err, docs){

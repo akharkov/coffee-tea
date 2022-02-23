@@ -11,14 +11,14 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-            <li class="nav-item active" 
+      <ul class="navbar-nav mr-auto myNavItem">
+            <li class="nav-item active " 
                 v-for="menuItem in this.$store.state.navDataObj" 
                 :key="menuItem._id">
 
-                <a class="nav-link" :href="menuItem.refLink"> <!-- productName -->
+                 <a class="nav-link" :href="menuItem.refLink"> <!-- productName -->
                   {{menuItem.productName}} <span class="sr-only">(текущая)</span>
-                </a>
+                 </a>
               
             </li>
             <li class="nav-item active" >
@@ -33,36 +33,6 @@
 
 
     </div>
-
-<!-- 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Главная <span class="sr-only">(текущая)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Ссылка</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Выпадающий список
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Действие</a>
-            <a class="dropdown-item" href="#">Другое действие</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Что-то еще здесь</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Отключенный</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
-      </form>
-    </div> -->
   </nav>
 
 </div>
@@ -110,6 +80,20 @@ export default {
 </script>
 
 <style scoped>
+  .myNavItem{
+  font-family: 'Montserrat', sans-serif;
+
+        font-size: 30px; 
+        font-weight: bold;
+        font-style: italic;
+        font-stretch:expanded;
+        letter-spacing:0.2em;
+
+
+        text-shadow: 1px 1px 0 #3c50c2, 2px 2px 0 #4e4a4a;
+         /* text-align:center; */
+
+  }
     
  
 

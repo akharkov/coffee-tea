@@ -3,7 +3,7 @@
 <template>
     <div class="cardMainStyle myCardShadow ">
         <div class="productPic" >
-           <img :src="itemImage" alt="selectedItem" > <!-- связать alt (:alt=) с описателем -->
+           <img :src="itemImage" alt="_А где картинка? :)_" > <!-- связать alt (:alt=) с описателем -->
             <!-- <img src="../../assets/images/coffee/pic2.jpg" > -->
             
 
@@ -15,7 +15,7 @@
                 
 
             </div>
-            <div>
+            <div class="cardProductSubType">
                 {{Item.productSubType.productSubTypeName}}
             </div>
        
@@ -39,6 +39,8 @@
     </div>
     
 </template>
+
+
 
 <script>
     
@@ -90,6 +92,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
     .cardMainStyle{
         margin: 10px;
         padding: 5px ;
@@ -111,8 +116,9 @@ export default {
         /* background: rgba(253, 253, 253, 0); */
         border-radius: 5%;
         max-width: 100%;
-        height: 50%;
+        height: 40%;
         margin: auto;
+        padding: 3%;
         width: max-content;
         /* object-position: 50% 50%; */
         /* border: 8px double #FF0000;
@@ -139,20 +145,54 @@ box-shadow: inset 9px 9px 30px -12px rgba(0,0,0,0.7); */
 
     .cardBody{
         overflow: hidden;
+        text-align: justify;
+        word-break:break-all;
+        hyphens:auto;
+        /* font-family: Montserrat ; */
         
     }    
     .cardBody .cardProductTitle {
         color: rgb(144, 107, 245);
 
+     /*   font-family: 'Roboto', sans-serif ; 
+        font-family: 'Open Sans', sans-serif;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Oswald', sans-serif; */
+        
+        font-family: 'Montserrat', sans-serif;
 
-        /* font-family: Gotham Pro Kondolar-Regular, Georgia, serif; */
-        /* font-family: Kondolar-Regular ; */
-        text-shadow: 1px 1px 0 #f1e9e9, 2px 2px 0 #4e4a4a;
+        font-size: 20px; 
+        font-weight: bold;
+        font-style: italic;
+        font-stretch:expanded;
+        letter-spacing:0.2em;
 
-        /* color: #efebeb; *//* 
-        text-shadow: -1px 0 0 #101010, 1px 1px 0 #1b1a1a, 2px -1px 0 #1d1d1d, 3px 0 0 #1d1c1c;
- */
+
+        text-shadow: 1px 1px 0 #3c50c2, 2px 2px 0 #4e4a4a;
+         text-align:center;
+
+        
     }
+
+.cardBody .cardProductSubType {
+        color: rgb(16, 15, 15);
+     
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px; 
+        font-weight: bold;
+
+        /* font-style: italic;
+        font-stretch:expanded;
+        letter-spacing:0.2em; 
+        text-shadow: 1px 1px 0 #3c50c2, 2px 2px 0 #4e4a4a; */
+
+        
+    }
+
+
+
+
+
     /* .cardBody */ .cardFooter{
         margin: 0;
 

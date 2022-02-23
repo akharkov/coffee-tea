@@ -8,6 +8,9 @@
                 <div class="col-1"></div>
                 <div class="col-10  titleProducts myShadow">
                     <h3>{{propsItem.productName}} </h3>
+                    <button type="button" class="btn  btn-sm productBtn ">История</button>
+                    <button type="button" class="btn  btn-sm productBtn">Рецепты</button>
+                    <button type="button" class="btn  btn-sm productBtn">Что-то еще...</button>
                     
                 </div>      
 
@@ -74,7 +77,7 @@ export default {
         font-family: Lobster;
         color: rgba(10, 37, 190, 0.931);
         text-shadow: 1px 1px 0 #f1e9e9, 2px 2px 0 #4e4a4a;
-
+        height: 45px;
     }
 
 
@@ -137,7 +140,39 @@ export default {
   box-shadow: rgba(245, 246, 246, 0.102);
 }
 
+.productBtn{
+  margin: 10px;
+  background: rgba(217, 223, 241, 0.87);
+  border-radius: 4px;
+  box-shadow: 5px 0 5px 0 rgba(173, 168, 168, 0.637);
+  color: rgb(93, 107, 231);
+  display: inline-block;
+  margin: 10px;
+  padding: 2px 20px;
+  position: relative;
+  text-decoration: none !important;
+  top: 0px;
+  transition: all 0.3s ease-in-out;
+
+}
  
+.productBtn span {
+  display: inline-block;
+  color: rgb(170, 42, 42);
+  padding: 10px 20px;
+  background: #d3f0a4;
+  border-radius: 4px;
+  transition: transform .2s ease-in-out;
+}
+.productBtn:active {
+  box-shadow: 0 0 0 0 rgb(134, 170, 168);
+  top: 6px;
+}
+.productBtn:active span {
+  transform: translate(0, 6px);
+  box-shadow: 0 -5px 0 blue;
+  transition: 0.3s;
+} 
 /* ========= */
 
 
