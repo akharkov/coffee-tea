@@ -91,6 +91,7 @@ X
         left:0;       
         
         background-color: rgba(210, 230, 210, 0.8); 
+        z-index: 999999;
         
 
         

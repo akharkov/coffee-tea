@@ -2,7 +2,7 @@
 <!-- http://news.shamcode.ru/blog/oh-uzh-eti-modalnyie-okna-ili-pochemu-ya-polyubil-render-funktsii-v-vuejs/ -->
 
 <template>
-  <div style="z-index:100000">
+  <div >
     test
     <transition name="modal-fade">
       
