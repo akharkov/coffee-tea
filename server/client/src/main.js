@@ -33,6 +33,7 @@ const store = new Vuex.Store({
   state: {
     count: 0,
     isModalVisibleNews: false,
+    isModalVisibleProduct: false,
     tmpObj: {},
     navDataObj: {}
   },
@@ -48,11 +49,6 @@ const store = new Vuex.Store({
         console.log(`state.navDataObj = ${state.navDataObj[key].refLink}`);
       }  
 
-
-
-      
-      
-
     },
     tmpObjAssign(state, newsItem){
       state.tmpObj = newsItem;
@@ -63,6 +59,13 @@ const store = new Vuex.Store({
     },
     fullNewsHide(state){
       state.isModalVisibleNews = false;
+    },
+    fullProductVisible(state){
+      state.isModalVisibleProduct = true;
+      
+    },
+    fullProductHide(state){
+      state.isModalVisibleProduct = false;
     }
   }
 });

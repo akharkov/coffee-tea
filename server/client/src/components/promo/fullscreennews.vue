@@ -30,7 +30,7 @@ X
 
 
 <script>
-    
+
 
     export default {
         name: 'fullscreennews',

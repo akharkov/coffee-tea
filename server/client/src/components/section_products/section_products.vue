@@ -48,6 +48,7 @@ export default {
         }
     },
     beforeCreate: function () {
+        this.$options.components.fullscreenproduct = require('@/components/section_products/fullscreenproduct.vue').default;
         this.$options.components.product_card = require('@/components/section_products/product_card').default;
   
        

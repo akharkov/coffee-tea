@@ -22,14 +22,7 @@
 
 
             <div id="newsFeed" class="col col-2 d-none d-lg-block news_feed" style="max-height: 100%; overflow-y:scroll; text-overflow: clip;" >
- <!--                
-                <div v-for="newsItem in news" :key="newsItem.id " style="max-height: 30%; overflow:hidden; text-overflow: ellipsis;">
-                    <h4>{{newsItem.newsTitle}}</h4>
-                    <p></p>
-                    <p>{{newsItem.newsBody }}</p>
-                </div> 
--->
-
+ 
                 <news_card v-for="Item in news" :key="Item.id" :Item="Item" style="max-height: 100%;  text-overflow: ellipsis;"> 
                 </news_card>
                  
@@ -57,6 +50,12 @@
        <fullscreennews v-bind:itemNews="this.$store.state.tmpObj" class="myModalBackground" v-show="this.$store.state.isModalVisibleNews"   > <!-- @close="closeModal" v-on:click="closeModal()" -->
            
        </fullscreennews> 
+
+
+       <fullscreenproduct v-bind:itemProduct="this.$store.state.tmpObj" class="myModalBackground" v-show="this.$store.state.isModalVisibleProduct"   > <!-- @close="closeModal" v-on:click="closeModal()" -->
+           
+       </fullscreenproduct> 
+
     
     </section>    
 </template>
@@ -78,6 +77,8 @@
 
     },
     beforeCreate: function () {
+            
+        this.$options.components.fullscreenproduct = require('@/components/section_products/fullscreenproduct.vue').default;
         this.$options.components.fullscreennews = require('@/components/promo/fullscreennews.vue').default;
         this.$options.components.socialkeys = require('@/components/other/socialkeys.vue').default;
        

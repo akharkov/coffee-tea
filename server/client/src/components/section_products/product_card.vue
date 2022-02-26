@@ -1,7 +1,7 @@
 
 
 <template>
-    <div class="cardMainStyle myCardShadow ">
+    <div class="cardMainStyle myCardShadow " v-on:click="productShow(Item, $event)">
         <div class="productPic" >
            <img :src="itemImage" alt="_А где картинка? :)_" > <!-- связать alt (:alt=) с описателем -->
             <!-- <img src="../../assets/images/coffee/pic2.jpg" > -->
@@ -66,6 +66,13 @@ export default {
         },
     },
     methods:{
+        productShow(Item, event){
+                this.$store.commit('tmpObjAssign',this.Item);
+                this.$store.commit('fullProductVisible');
+
+          alert(`Key pressed ${Item}`)  ;
+          console.log(Item);
+        }
 
     },
   computed: {
