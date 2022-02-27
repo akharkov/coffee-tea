@@ -10,9 +10,11 @@ X
                          </div>  
                          <div class="row" style="margin:0">
                               <div class="col ">
-                                   <img :src="itemImage" alt="_А где картинка? :)_" >
-                            {{this.$store.state.tmpObj}}
-                            
+                                 <!--   this.pathImage -->
+                                   {{`wwwwww  ${this.picPath}`}}
+                                   <img :src="this.picPath" alt="_А где картинка? :)_" >
+                            <!-- {{this.cardData }} --> <!-- .$store.state.tmpProdObj -->
+                            {{this.$store.state.tmpProdObj }} <!-- .$store.state.tmpProdObj -->
 
                               </div>
                         
@@ -35,7 +37,10 @@ export default {
      components:{},
      data: function(){
           return {
-                cardData: this.itemProduct
+                cardData: this.$store.state.tmpProdObj,
+                //picPath: this.productPic(),
+                pathImage:""
+                //this.itemProduct
           }
      },
      beforeCreate:function(){
@@ -47,26 +52,63 @@ export default {
      methods:{
           closeModal() {
                this.$store.commit('fullProductHide');                
+          },
+          productPic(){
+               //const myPath = `../../assets/images/${this.$store.state.tmpProdObj.productType.productPicPath}/${this.$store.state.tmpProdObj.pic}`;
+               //const myPath = '';
+               //const myPath = `../../assets/images/${this.productType.productPicPath}/${this.pic}`;
+
+
+               //console.log(`myPath = ${myPath}`);
+               
+
+               return 'Ops';//myPath;
+
           }
 
      },
      computed:{
-itemImage(picPath, picName) {
-     const fileName="not file";
-     
-        console.log(this);
+
+          picPath: function(){
+               this.cardData = this.$store.state.tmpProdObj;
+               
+
+
+
+
+const keys = Object.keys(this.cardData );
+keys.forEach(key => {
+     console.log(`qq ${key} : ${this.cardData[key]}`);
+});
+               //const myPath=`WOW+${this.cardData.productType.productPicPath}`;
+
+               const myPath = `../../assets/images/${this.cardData.productType.productPicPath}/${this.cardData.pic}`;
+               console.log(`calc myPath = ${myPath}`);
+               
+
+               return myPath;
+          }
+
+/* 
+          pathImage: function(){
+               const tmp=this.cardData.productType.productPicPath;
+               const fileName="I don.t now";
+               console.log(`this.cardData == ${tmp}`)
+               //this.cardData.productType.productPicPath; 
+               //this.$store.tmpProdObj.productType.productPicPath;
+     console.log(`nnn--${this.$store.tmpProdObj}`);
+     console.log(`this.cardData ${this.cardData}`);
       //const fileName = `../../assets/images/coffee/pic2.jpg` //${this.Item.pic}
       // const fileName = `../../assets/images/${this.Item.productType.productPicPath}/${this.Item.pic}` //${this.Item.pic}
       //this.Item.pic; //.toLowerCase()
-
-
-
-      console.log('fileName==',fileName);
-      return /* require */(`${fileName}`);
+               console.log('fileName==',fileName);
+               return tmp;
+               //return (`${fileName}`);
       //return require(`..\\..\\img${this.Item.productType.productPicPath}${fileName}.jpg`);
       //return `${fileName}`;
-
-    }
+               
+          }
+           */
 
      },
      mounted(){

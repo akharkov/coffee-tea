@@ -35,6 +35,7 @@ const store = new Vuex.Store({
     isModalVisibleNews: false,
     isModalVisibleProduct: false,
     tmpObj: {},
+    tmpProdObj:{},
     navDataObj: {}
   },
   mutations: {
@@ -53,6 +54,9 @@ const store = new Vuex.Store({
     tmpObjAssign(state, newsItem){
       state.tmpObj = newsItem;
     },
+    tmpProdObjAssign(state, Item){
+      state.tmpProdObj = Item;
+    },
     fullNewsVisible(state){
       state.isModalVisibleNews = true;
       
@@ -61,6 +65,7 @@ const store = new Vuex.Store({
       state.isModalVisibleNews = false;
     },
     fullProductVisible(state){
+      
       state.isModalVisibleProduct = true;
       
     },

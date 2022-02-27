@@ -66,7 +66,7 @@ export default {
     },
     mounted(){
         this.getProductsPromise(this.$props.propsItem);
-        console.log(`===+++ Props: ${this.$props.propsItem}`);
+        //console.log(`===+++ Props: ${this.$props.propsItem}`);
     }
     
 }

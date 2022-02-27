@@ -67,11 +67,11 @@ export default {
     },
     methods:{
         productShow(Item, event){
-                this.$store.commit('tmpObjAssign',this.Item);
+                this.$store.commit('tmpProdObjAssign',this.Item);
                 this.$store.commit('fullProductVisible');
 
-          alert(`Key pressed ${Item}`)  ;
-          console.log(Item);
+    
+          console.log(`Call from product_card ${Item}`);
         }
 
     },

@@ -52,7 +52,7 @@
        </fullscreennews> 
 
 
-       <fullscreenproduct v-bind:itemProduct="this.$store.state.tmpObj" class="myModalBackground" v-show="this.$store.state.isModalVisibleProduct"   > <!-- @close="closeModal" v-on:click="closeModal()" -->
+       <fullscreenproduct v-bind:itemProduct="this.$store.state.tmpProdObj" class="myModalBackground" v-show="this.$store.state.isModalVisibleProduct"   > <!-- @close="closeModal" v-on:click="closeModal()" -->
            
        </fullscreenproduct> 
 
