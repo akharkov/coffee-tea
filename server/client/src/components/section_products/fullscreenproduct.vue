@@ -9,12 +9,11 @@
 X                         
                          </div>  
                          <div class="row" style="margin:0">
-                              <div class="col ">
-                                 <!--   this.pathImage -->
-                                   {{`wwwwww  ${this.picPath}`}}
+                              <div class="col ">                            
+                                   
                                    <img :src="this.picPath" alt="_А где картинка? :)_" >
-                            <!-- {{this.cardData }} --> <!-- .$store.state.tmpProdObj -->
-                            {{this.$store.state.tmpProdObj }} <!-- .$store.state.tmpProdObj -->
+                            
+                                   {{this.$store.state.tmpProdObj }} 
 
                               </div>
                         
@@ -158,6 +157,7 @@ keys.forEach(key => {
         -webkit-box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
         -moz-box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
         box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
+        max-height: 95%;
   
     }
 

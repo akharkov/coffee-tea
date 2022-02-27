@@ -35,7 +35,7 @@ const store = new Vuex.Store({
     isModalVisibleNews: false,
     isModalVisibleProduct: false,
     tmpObj: {},
-    tmpProdObj:{},
+    tmpProdObj:{productType:{productPicPath:""}},
     navDataObj: {}
   },
   mutations: {
