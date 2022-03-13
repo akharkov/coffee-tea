@@ -1,30 +1,21 @@
 
-
 <template>
-
-
-
      <transition name="fade">
           <div class="myModalBackground">
-               <div class="myModalDiv">
-               
-                    <div class="row" v-on:click="closeModal()"  style="float: left"> 
-X                         
-                    </div>  
-                    
 
-                    <div class="row productPic" style="margin:0">
-                         <img  :src="this.picPath" alt="_А где картинка? :)_" >
-                    </div>
+               <div class="myModalDiv cont">
+                    <!-- <div class="row cont"> -->
+                         <div class="row" v-on:click="closeModal()"  style="float: left"> 
+                              X                         
+                         </div>  
+                         <div class=" productPic" style="margin:0">
+                              <img  :src="this.picPath" alt="_А где картинка? :)_" >
+                         </div>
 
-                         
-                    
-
-                    <div >
-                         {{this.$store.state.tmpProdObj }} 
-                    </div>
-
-
+                         <div class="productData">
+                             {{this.$store.state.tmpProdObj }} 
+                         </div>
+                    <!-- </div> -->
 
                </div>
 
@@ -131,9 +122,9 @@ keys.forEach(key => {
      .myModalDiv{
         position:  relative; 
         margin: 5%;
-        padding: 5%;
+        padding: 2%;
         max-width: 90%;
-        max-height: 95%;
+        max-height: fill-available;
         
         background-color: rgba(50, 112, 50, 0.4); 
 
@@ -144,31 +135,30 @@ keys.forEach(key => {
         /* This is a shorthand of translateX(-50%) and translateY(-50%) */
          
         /* transform: translate(-50%, -50%);  */
-       
-        
         border: 2px solid  white;
         border-radius: 1em;
         -webkit-box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
         -moz-box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
         box-shadow: 10px 10px 10px 0px rgba(14, 49, 75, 0.4);
-        
   
     }
-    .productPic{
-        /* background: rgba(253, 253, 253, 0); */
-        position:  absolute; 
-        left: 50%;  /* position the left edge of the element at the middle of the parent */
 
+    .cont{
+         position: relative;
+         height: 100%;
+         width: 100%;
+
+    }
+
+
+    .productPic{
+        
+        position:  absolute; 
+        /* left: 50%; */  /* position the left edge of the element at the middle of the parent */
+     /* align-items: center; */
         border-radius: 5%;
         max-width: 100%;
         height: 40%;
-        
-        /* margin: auto;
-        padding: 3%; */
-        /* width: max-content; */
-        /* object-position: 50% 50%; */
-        /* border: 8px double #FF0000;
-        border-top: 4px dotted #FDD201; */
 
     }
 
@@ -188,6 +178,36 @@ keys.forEach(key => {
 -moz-box-shadow: inset 9px 9px 30px -12px rgba(0,0,0,0.7);
 box-shadow: inset 9px 9px 30px -12px rgba(0,0,0,0.7); */
         }
+
+        .productData{
+            
+             position: absolute;
+             height: 50%;
+             bottom: 1px;
+             /* overflow: hidden; */
+             overflow-y: scroll;
+
+        }
+
+/* ======== */
+    .productData::-webkit-scrollbar {
+        width: 10px;
+        background-color: #44701b25;
+        }
+/* бегунок */
+.productData::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #f6faf5;
+}
+
+
+/* линия скроллера */
+.productData::-webkit-scrollbar-track {
+ /*  -webkit-box-shadow: inset 0 0 10px rgba(248, 246, 246, 0.1); */
+  border-radius: 10px;
+  background-color: #0b570b26;
+  box-shadow: rgba(245, 246, 246, 0.102);
+}        
 
     
 
